@@ -20,7 +20,7 @@ def stop_timer():
         elapsed_time += time.time() - start_time
         start_time = None
         # Refresh the timer
-        elapsed_time = 0
+        #elapsed_time = 0
 
 # Pause the timer
 def pause_timer():
@@ -50,6 +50,7 @@ def monitor_window_focus():
 # Event handler for when Blender is closed or another file loaded
 def on_blender_exit(dummy):
     stop_timer()
+    elapsed_time = 0
 
 # Event handler when Blender regains focus
 def on_blender_focus(dummy):

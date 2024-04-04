@@ -77,6 +77,7 @@ class PT_ProjectTimer(bpy.types.Panel):
         row.operator("timer.stop", text="Stop")
         row.operator("timer.pause", text="Pause")
         row.operator("timer.resume", text="Resume")
+        row.operator("timer.display_current_time", text="Display Elapsed Time")
 
 # Operator to start the timer
 class StartTimerOperator(bpy.types.Operator):

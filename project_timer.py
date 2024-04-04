@@ -105,3 +105,9 @@ classes = (
     PauseTimerOperator,
     ResumeTimerOperator
 )
+
+def register():
+    for cls in classes:
+        bpy.utils.register_class(cls)
+    bpy.app.handlers.load_post.append(on_blender_exit)
+    bpy.app.handlers.scene_update_post.append(on_blender_focus)

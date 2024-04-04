@@ -97,3 +97,11 @@ class ResumeTimerOperator(bpy.types.Operator):
         resume_timer()
         return {'FINISHED'}
 
+# Register classes
+classes = (
+    PT_ProjectTimer,
+    StartTimerOperator,
+    StopTimerOperator,
+    PauseTimerOperator,
+    ResumeTimerOperator
+)

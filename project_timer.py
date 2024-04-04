@@ -57,7 +57,7 @@ class PT_ProjectTimer(bpy.types.Panel):
     bl_label = "Project Timer"
     bl_idname = "panel.project_timer"
     bl_space_type = 'VIEW_3D'
-    bl_region_tye = 'UI'
+    bl_region_type = 'UI'
     bl_category = 'Timer'
 
     def draw(self, context):

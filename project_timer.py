@@ -87,3 +87,13 @@ class PauseTimerOperator(bpy.types.Operator):
     def execute(self, context):
         pause_timer()
         return {'FINISHED'}
+    
+# Operator to resume the timer
+class ResumeTimerOperator(bpy.types.Operator):
+    bl_idname = "timer.resume"
+    bl_label = "Resume Timer"
+
+    def execute(self, context):
+        resume_timer()
+        return {'FINISHED'}
+

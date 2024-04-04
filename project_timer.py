@@ -111,3 +111,9 @@ def register():
         bpy.utils.register_class(cls)
     bpy.app.handlers.load_post.append(on_blender_exit)
     bpy.app.handlers.scene_update_post.append(on_blender_focus)
+
+def unregister():
+    for cls in classes:
+        bpy.utils.unregister_class(cls)
+    bpy.app.handlers.load_post.remove(on_blender_exit)
+    bpy.app.handlers.scene_update_post.remove(on_blender_focus)

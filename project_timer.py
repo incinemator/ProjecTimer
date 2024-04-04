@@ -60,3 +60,12 @@ class PT_ProjectTimer(bpy.types.Panel):
         row.operator("timer.stop", text="Stop")
         row.operator("timer.pause", text="Pause")
         row.operator("timer.resume", text="Resume")
+
+# Operator to start the time
+class StartTimerOperator(bpy.types.Operator):
+    bl_idname = "timer.start"
+    bl_label = "Start Timer"
+
+    def execute(self, context):
+        start_timer()
+        return {'FINISHED'}

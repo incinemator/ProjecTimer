@@ -38,3 +38,25 @@ def on_blender_exit(dummy):
 # Event handler when Blender regains focus
 def on_blender_focus(dummy):
     resume_timer()
+
+# UI
+class PT_ProjectTimer(bpy.types.Panel):
+    bl_label = "Project Timer"
+    bl_idname = "panel.project_timer"
+    bl_space_type = 'VIEW_3D'
+    bl_region_tye = 'UI'
+    bl_category = 'Timer'
+
+    def draw(self, context):
+        layout = self.layout
+        global elapsed_time
+
+        # Display elapsed time
+        layout.label(text="Time Spent: %.2f seconds" % elapsed_time)
+
+        # Buttons
+        row = layout.row()
+        row.operator("timer.start", text="Start")
+        row.operator("timer.stop", text="Stop")
+        row.operator("timer.pause", text="Pause")
+        row.operator("timer.resume", text="Resume")

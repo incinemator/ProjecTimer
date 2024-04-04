@@ -30,3 +30,11 @@ def resume_timer():
     if is_paused:
         start_time = time.time()
         is_paused = False
+
+# Event handler for when Blender is closed or another file loaded
+def on_blender_exit(dummy):
+    stop_timer()
+
+# Event handler when Blender regains focus
+def on_blender_focus(dummy):
+    resume_timer()

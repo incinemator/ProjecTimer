@@ -114,6 +114,14 @@ class ResumeTimerOperator(bpy.types.Operator):
     def execute(self, context):
         resume_timer()
         return {'FINISHED'}
+    
+class DisplayCurrentTimeOperator(bpy.types.Operator):
+    bl_idname = "timer.display_current_time"
+    bl_label = "Display Current Time"
+
+    def execute(self, context):
+        pass  # This operator is used to refresh the timer display
+        return {'FINISHED'}
 
 # Register classes
 classes = (
@@ -121,7 +129,8 @@ classes = (
     StartTimerOperator,
     StopTimerOperator,
     PauseTimerOperator,
-    ResumeTimerOperator
+    ResumeTimerOperator,
+    DisplayCurrentTimeOperator
 )
 
 def register():

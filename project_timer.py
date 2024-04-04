@@ -117,3 +117,6 @@ def unregister():
         bpy.utils.unregister_class(cls)
     bpy.app.handlers.load_post.remove(on_blender_exit)
     bpy.app.handlers.scene_update_post.remove(on_blender_focus)
+
+if __name__ == "__main__":
+    register()

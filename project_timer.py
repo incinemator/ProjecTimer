@@ -1,5 +1,6 @@
 import bpy
 import time
+import threading
 
 # Global variables for time tracking
 start_time = None

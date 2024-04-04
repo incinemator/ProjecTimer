@@ -78,3 +78,12 @@ class StopTimerOperator(bpy.types.Operator):
     def execute(self, context):
         stop_timer()
         return {'FINISHED'}
+    
+# Operator to pause the timer
+class PauseTimerOperator(bpy.types.Operator):
+    bl_idname = "timer.pause"
+    bl_label = "Pause Timer"
+
+    def execute(self, context):
+        pause_timer()
+        return {'FINISHED'}

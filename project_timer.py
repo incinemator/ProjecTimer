@@ -120,7 +120,7 @@ class DisplayCurrentTimeOperator(bpy.types.Operator):
     bl_label = "Display Current Time"
 
     def execute(self, context):
-        pass  # This operator is used to refresh the timer display
+        bpy.ops.wm.redraw_timer(type='DRAW_WIN_SWAP', iterations=1)
         return {'FINISHED'}
 
 # Register classes

@@ -9,7 +9,8 @@ is_paused = False
 
 # Start the timer
 def start_timer():
-    global start_time, is_paused
+    global start_time, is_paused, elapsed_time
+    elapsed_time = 0
     if start_time is None:
         start_time = time.time() - elapsed_time
     is_paused = False

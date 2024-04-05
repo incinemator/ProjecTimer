@@ -18,7 +18,7 @@ def start_timer():
 def stop_timer():
     global start_time, elapsed_time
     if start_time is not None:
-        elapsed_time += time.time() - start_time
+        elapsed_time = time.time() - start_time
         start_time = None
 
 # Pause the timer

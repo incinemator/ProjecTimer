@@ -45,7 +45,8 @@ def pause_timer():
 def resume_timer():
     global running_time, is_paused
     if is_paused:
-        running_time = time.time()
+        elapsed_time = time.time()
+        running_time = elapsed_time - start_time
         is_paused = False
 
 def display_running_time():
@@ -62,10 +63,6 @@ def format_time():
     hours = int(seconds//3600)
     return "{:02d}:{:02d}:{:02d}".format(hours, minutes, seconds)
     
-    
-
-
-
 # UI
 class PT_ProjectTimer(bpy.types.Panel):
     bl_label = "ProjecTimer"

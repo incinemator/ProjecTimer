@@ -24,8 +24,6 @@ def stop_timer():
         start_time = None
         running_time = 0
 
-def display_running_time():
-
 # Pause the timer
 def pause_timer():
     global is_paused
@@ -38,6 +36,10 @@ def resume_timer():
         start_time = time.time() - elapsed_time
         is_paused = False
 
+def display_running_time():
+    global start_time, running_time
+    if start_time is not None:
+        running_time = time.time() - start_time()
 
 
 # UI

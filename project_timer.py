@@ -55,6 +55,15 @@ def display_running_time():
 
 # Format time into HH:MM:SS
 def format_time():
+    global running_time, elapsed_time
+    seconds = running_time
+    seconds = int(seconds % 60)
+    minutes = int((seconds % 3600)//60)
+    hours = int(seconds//3600)
+    
+    
+
+
 
 # UI
 class PT_ProjectTimer(bpy.types.Panel):

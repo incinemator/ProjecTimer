@@ -62,7 +62,7 @@ class PT_ProjectTimer(bpy.types.Panel):
         layout.operator("timer.start", text="Start", icon='REC')
         layout.operator("timer.pause", text="Pause", icon='PAUSE')
         row = layout.row()
-        row.operator("timer.stop", text="Stop")
+        row.operator("timer.stop", text="Stop", icon='SNAP_FACE')
         row.operator("timer.resume", text="Resume")
         layout.operator("timer.display_current_time", text="Display Elapsed Time")
 

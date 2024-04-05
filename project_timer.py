@@ -36,7 +36,7 @@ def stop_timer():
 
 # Pause the timer
 def pause_timer():
-    global is_paused
+    global is_paused, running_time
     if is_paused is not True:
         is_paused = True
         running_time = time.time() - start_time
@@ -60,6 +60,7 @@ def format_time():
     seconds = int(seconds % 60)
     minutes = int((seconds % 3600)//60)
     hours = int(seconds//3600)
+    return "{:02d}:{:02d}:{:02d}".format(hours, minutes, seconds)
     
     
 

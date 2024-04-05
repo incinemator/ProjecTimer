@@ -60,7 +60,7 @@ class PT_ProjectTimer(bpy.types.Panel):
 
         # Buttons
         layout.operator("timer.start", text="Start")
-        layout.operator("timer.pause", text="Pause")
+        layout.operator("timer.pause", text="Pause", icon='PAUSE')
         row = layout.row()
         row.operator("timer.stop", text="Stop")
         row.operator("timer.resume", text="Resume")

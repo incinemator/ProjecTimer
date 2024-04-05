@@ -45,7 +45,7 @@ def pause_timer():
 def resume_timer():
     global start_time, is_paused
     if is_paused:
-        start_time = time.time() - elapsed_time
+        running = time.time()
         is_paused = False
 
 def display_running_time():

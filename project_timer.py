@@ -16,6 +16,7 @@ import threading
 start_time = None
 running_time = 0
 elapsed_time = 0
+paused_time = 0
 is_paused = False
 
 # Start the timer

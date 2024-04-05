@@ -64,7 +64,7 @@ def display_running_time():
     if start_time is not None and is_paused is not True:
         if paused_time is None:
             elapsed_time = time.time() - start_time
-        else:
+        elif paused_time is not None:
             resume_time = time.time()
             elapsed_time = time.time() - resume_time + paused_time
 

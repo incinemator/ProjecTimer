@@ -4,6 +4,7 @@ import threading
 
 # Global variables for time tracking
 start_time = None
+running_time = 0
 elapsed_time = 0
 is_paused = False
 

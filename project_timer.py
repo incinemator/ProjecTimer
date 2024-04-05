@@ -37,10 +37,10 @@ def stop_timer():
 
 # Pause the timer
 def pause_timer():
-    global is_paused, running_time, paused_time
+    global is_paused, elapsed_time, paused_time
     if is_paused is not True:
         is_paused = True
-        running_time = time.time() - start_time
+        elapsed_time = time.time() - start_time
         paused_time = running_time
 
 # Resume the timer
@@ -77,7 +77,7 @@ class PT_ProjectTimer(bpy.types.Panel):
         global elapsed_time, running_time
 
         # Display elapsed time
-        layout.label(text="Running Time: %.2f seconds" % running_time)
+        #layout.label(text="Running Time: %.2f seconds" % running_time)
         layout.label(text="Time Spent: %.2f seconds" % elapsed_time)
 
         # Buttons

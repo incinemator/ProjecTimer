@@ -10,18 +10,19 @@ is_paused = False
 
 # Start the timer
 def start_timer():
-    global start_time, is_paused, elapsed_time
+    global start_time, is_paused, running_time, elapsed_time
     elapsed_time = 0
     if start_time is None:
-        start_time = time.time() - elapsed_time
+        start_time = time.time() - running_time
     is_paused = False
 
 # Stop the timer
 def stop_timer():
-    global start_time, elapsed_time
+    global start_time, elapsed_time, running_time
     if start_time is not None:
         elapsed_time = time.time() - start_time
         start_time = None
+        running_time = 0
 
 # Pause the timer
 def pause_timer():

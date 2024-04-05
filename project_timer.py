@@ -16,7 +16,7 @@ import threading
 start_time = None
 running_time = 0
 elapsed_time = 0
-paused_time = 0
+paused_time = None
 is_paused = False
 
 # Start the timer
@@ -32,9 +32,10 @@ def start_timer():
 def stop_timer():
     global start_time, elapsed_time
     if start_time is not None:
-        if is_paused is not True:
+        if is_paused is not True and paused_time is not None:
             elapsed_time = time.time() - start_time
             start_time = None
+            paused_time = None
         else:
             elapsed_time = paused_time
 

@@ -53,6 +53,9 @@ def display_running_time():
     if start_time is not None:
         running_time = time.time() - start_time
 
+# Format time into HH:MM:SS
+def format_time():
+
 # UI
 class PT_ProjectTimer(bpy.types.Panel):
     bl_label = "ProjecTimer"

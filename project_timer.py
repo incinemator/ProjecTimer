@@ -24,6 +24,8 @@ def stop_timer():
         start_time = None
         running_time = 0
 
+def display_running_time():
+
 # Pause the timer
 def pause_timer():
     global is_paused

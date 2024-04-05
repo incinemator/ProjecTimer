@@ -51,7 +51,7 @@ class PT_ProjectTimer(bpy.types.Panel):
 
     def draw(self, context):
         layout = self.layout
-        global elapsed_time
+        global elapsed_time, running_time
 
         # Display elapsed time
         layout.label(text="Time Spent: %.2f seconds" % elapsed_time)

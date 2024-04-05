@@ -41,7 +41,6 @@ def display_running_time():
     if start_time is not None:
         running_time = time.time() - start_time()
 
-
 # UI
 class PT_ProjectTimer(bpy.types.Panel):
     bl_label = "Project Timer"
@@ -106,7 +105,7 @@ class DisplayCurrentTimeOperator(bpy.types.Operator):
     bl_label = "Display Current Time"
 
     def execute(self, context):
-        bpy.ops.wm.redraw_timer(type='DRAW_WIN_SWAP', iterations=1)
+        display_running_time()
         return {'FINISHED'}
 
 # Register classes

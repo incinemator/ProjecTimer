@@ -41,19 +41,19 @@ def pause_timer():
     if is_paused is not True:
         is_paused = True
         elapsed_time = time.time() - start_time
-        paused_time = running_time
+        paused_time = elapsed_time
 
 # Resume the timer
 def resume_timer():
-    global is_paused, running_time, paused_time
+    global is_paused, elapsed_time, paused_time
     if is_paused:
         is_paused = False
-        running_time = time.time() - paused_time
+        elapsed_time = time.time() - paused_time
 
 def display_running_time():
     global start_time, running_time, paused_time
     if start_time is not None and is_paused is not True:
-        return running_time
+        return elapsed_time
 
 # Format time into HH:MM:SS
 def format_time():

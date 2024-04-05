@@ -33,11 +33,11 @@ def stop_timer():
     global start_time, elapsed_time
     if start_time is not None:
         if is_paused is not True and paused_time is not None:
-            elapsed_time = time.time() - start_time
+            elapsed_time = time.time() - start_time - paused_time
             start_time = None
             paused_time = None
         elif is_paused is not True and paused_time is None:
-            elapsed_time = time.time() - start_time - paused_time
+            elapsed_time = time.time() - start_time
         else:
             elapsed_time = paused_time
 

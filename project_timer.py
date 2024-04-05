@@ -55,7 +55,7 @@ def display_running_time():
 
 # UI
 class PT_ProjectTimer(bpy.types.Panel):
-    bl_label = "Project Timer"
+    bl_label = "ProjecTimer"
     bl_idname = "panel.project_timer"
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'

@@ -30,7 +30,7 @@ def pause_timer():
 def resume_timer():
     global start_time, is_paused
     if is_paused:
-        start_time = time.time()
+        start_time = time.time() - elapsed_time
         is_paused = False
 
 
@@ -115,14 +115,11 @@ classes = (
 def register():
     for cls in classes:
         bpy.utils.register_class(cls)
-    bpy.app.handlers.load_post.append(on_blender_exit)
-    threading.Thread(target=monitor_window_focus, daemon=True).start()
 
 
 def unregister():
     for cls in classes:
         bpy.utils.unregister_class(cls)
-    bpy.app.handlers.load_post.remove(on_blender_exit)
 
 if __name__ == "__main__":
     register()

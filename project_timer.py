@@ -37,10 +37,11 @@ def stop_timer():
 
 # Pause the timer
 def pause_timer():
-    global is_paused, running_time
+    global is_paused, running_time, elapsed_time
     if is_paused is not True:
         is_paused = True
-        running_time = time.time() - start_time
+        elapsed_time = time.time() - start_time
+        running_time = 0
 
 # Resume the timer
 def resume_timer():
@@ -49,10 +50,9 @@ def resume_timer():
         is_paused = False
 
 def display_running_time():
-    global start_time, running_time
+    global start_time, running_time, paused_time
     if start_time is not None and is_paused is not True:
-        elapsed_time = time.time() - start_time
-        running_time = elapsed_time
+        running_time = time.time() - elapsed_time
 
 # Format time into HH:MM:SS
 def format_time():

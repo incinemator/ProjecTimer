@@ -59,9 +59,12 @@ def resume_timer():
         elapsed_time = paused_time
 
 def display_running_time():
-    global start_time, is_paused, elapsed_time
+    global start_time, is_paused, elapsed_time, paused_time
     if start_time is not None and is_paused is not True:
-        elapsed_time = time.time() - start_time
+        if paused_time is None:
+            elapsed_time = time.time() - start_time
+        else:
+            elapsed_time = time.time() - start_time - paused_time
 
 # Format time into HH:MM:SS
 def format_time():

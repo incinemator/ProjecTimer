@@ -27,7 +27,9 @@ def stop_timer():
 # Pause the timer
 def pause_timer():
     global is_paused
-    is_paused = True
+    if is_paused is not True:
+        is_paused = True
+        running_time = time.time() - start_time
 
 # Resume the timer
 def resume_timer():

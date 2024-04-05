@@ -43,14 +43,14 @@ def pause_timer():
 
 # Resume the timer
 def resume_timer():
-    global start_time, is_paused
+    global running_time, is_paused
     if is_paused:
-        running = time.time()
+        running_time = time.time()
         is_paused = False
 
 def display_running_time():
     global start_time, running_time
-    if start_time is not None:
+    if start_time is not None and is_paused is not True:
         running_time = time.time() - start_time
 
 # Format time into HH:MM:SS

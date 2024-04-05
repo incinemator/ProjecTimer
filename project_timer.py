@@ -1,3 +1,13 @@
+
+bl_info = {
+    "name": "ProjecTimer",
+    "author": "Giorgos Giannakoudakis",
+    "version": (1, 0),
+    "blender": (4, 1, 0),
+    "description": "Timer panel to track the time spent on a project ",
+    "category": "Productivity",
+}
+
 import bpy
 import time
 import threading

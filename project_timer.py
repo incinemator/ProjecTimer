@@ -39,7 +39,7 @@ def resume_timer():
 def display_running_time():
     global start_time, running_time
     if start_time is not None:
-        running_time = time.time() - start_time()
+        running_time = time.time() - start_time
 
 # UI
 class PT_ProjectTimer(bpy.types.Panel):

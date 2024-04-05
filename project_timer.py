@@ -59,7 +59,7 @@ class PT_ProjectTimer(bpy.types.Panel):
         layout.label(text="Time Spent: %.2f seconds" % elapsed_time)
 
         # Buttons
-        layout.operator("timer.start", text="Start")
+        layout.operator("timer.start", text="Start", icon='REC')
         layout.operator("timer.pause", text="Pause", icon='PAUSE')
         row = layout.row()
         row.operator("timer.stop", text="Stop")

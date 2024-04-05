@@ -69,9 +69,7 @@ def display_running_time():
             elapsed_time = time.time() - resume_time + paused_time
 
 # Format time into HH:MM:SS
-def format_time():
-    global running_time, elapsed_time
-    seconds = running_time
+def format_time(seconds):
     seconds = int(seconds % 60)
     minutes = int((seconds % 3600)//60)
     hours = int(seconds//3600)
@@ -91,7 +89,7 @@ class PT_ProjectTimer(bpy.types.Panel):
 
         # Display elapsed time
         #layout.label(text="Running Time: %.2f seconds" % running_time)
-        layout.label(text="Time Spent: %.2f seconds" % elapsed_time)
+        layout.label(text="Time Spent: {}".format(format_time(elapsed_time)))
 
         # Buttons
         layout.operator("timer.start", text="Start", icon='PLAY')

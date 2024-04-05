@@ -33,27 +33,7 @@ def resume_timer():
         start_time = time.time()
         is_paused = False
 
-# Function to monitor Blender window focus
-def monitor_window_focus():
-    global is_paused
-    while True:
-        try:
-            if bpy.context.window_manager.windows[0].fullscreen:
-                resume_timer()
-            else:
-                pause_timer()
-        except:
-            pass
-        time.sleep(1)
 
-# Event handler for when Blender is closed or another file loaded
-def on_blender_exit(dummy):
-    stop_timer()
-    elapsed_time = 0
-
-# Event handler when Blender regains focus
-def on_blender_focus(dummy):
-    resume_timer()
 
 # UI
 class PT_ProjectTimer(bpy.types.Panel):

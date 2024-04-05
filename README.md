@@ -1,5 +1,5 @@
 # ProjecTimer
-Blender add-on to automatically track time spent working on a project.
+Blender add-on to help artists track the time spent working on a project.
 
 ## Features
 - Start, stop, pause, and resume functionality

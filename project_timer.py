@@ -38,8 +38,10 @@ def stop_timer():
             paused_time = None
         elif is_paused is not True and paused_time is None:
             elapsed_time = time.time() - start_time
+            start_time = None
         else:
             elapsed_time = paused_time
+            start_time = None
 
 # Pause the timer
 def pause_timer():

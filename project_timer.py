@@ -41,12 +41,11 @@ class Timer:
             self.start_time = None
 
 # Pause the timer
-def pause_timer():
-    global is_paused, elapsed_time, paused_time
-    if is_paused is not True:
-        is_paused = True
-        elapsed_time = time.time() - start_time
-        paused_time = elapsed_time
+    def pause_timer(self):
+        if self.is_paused is not True:
+            self.is_paused = True
+            self.elapsed_time = time.time() - self.start_time
+            self.paused_time = self.elapsed_time
 
 # Resume the timer
 def resume_timer():

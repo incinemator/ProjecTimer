@@ -40,7 +40,7 @@ class Timer:
             self.elapsed_time = self.paused_time
             self.start_time = None
 
-# Pause the timer
+    # Pause the timer
     def pause_timer(self):
         if self.is_paused is not True:
             self.is_paused = True

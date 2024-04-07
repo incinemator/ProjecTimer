@@ -47,21 +47,20 @@ class Timer:
             self.elapsed_time = time.time() - self.start_time
             self.paused_time = self.elapsed_time
 
-# Resume the timer
-def resume_timer():
-    global is_paused, elapsed_time, paused_time
-    if is_paused:
-        is_paused = False
-        elapsed_time = paused_time
+    # Resume the timer
+    def resume_timer(self):
+        if self.is_paused:
+            self.is_paused = False
+            self.elapsed_time = self.paused_time
 
-def display_running_time():
-    global start_time, is_paused, elapsed_time, paused_time, resume_time
-    if start_time is not None and is_paused is not True:
-        if paused_time is None:
-            elapsed_time = time.time() - start_time
-        elif paused_time is not None:
-            resume_time = time.time()
-            elapsed_time = time.time() - resume_time + paused_time
+    def display_running_time():
+        global start_time, is_paused, elapsed_time, paused_time, resume_time
+        if start_time is not None and is_paused is not True:
+            if paused_time is None:
+                elapsed_time = time.time() - start_time
+            elif paused_time is not None:
+                resume_time = time.time()
+                elapsed_time = time.time() - resume_time + paused_time
 
 # Format time into HH:MM:SS
 def format_time(seconds):

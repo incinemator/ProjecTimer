@@ -22,25 +22,11 @@ class Timer:
 
     def start_timer(self):
         if self.start_timer is None:
-            start_time
+            self.start_time = time.time()
+        self.is_paused = False
 
 
-# Global variables for time tracking
-start_time = None
-running_time = 0
-elapsed_time = 0
-paused_time = None
-resume_time = 0
-is_paused = False
 
-# Start the timer
-def start_timer():
-    global start_time, is_paused, elapsed_time, running_time
-    running_time = 0
-    elapsed_time = 0
-    if start_time is None:
-        start_time = time.time()
-    is_paused = False
 
 # Stop the timer
 def stop_timer():

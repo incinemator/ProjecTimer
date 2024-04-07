@@ -12,10 +12,10 @@ import bpy
 import time
 
 class Timer:
-    def __init__(self):
+    def __init__(self, elapsed_time):
         self.start_time = None
         self.running_time = 0
-        self.elapsed_time = 0
+        self.elapsed_time = elapsed_time
         self.paused_time = 0
         self.resume_time = 0
         self.is_paused = False
@@ -82,7 +82,7 @@ class PT_ProjectTimer(bpy.types.Panel):
 
         # Display elapsed time
         #layout.label(text="Running Time: %.2f seconds" % running_time)
-        layout.label(text="Time Spent: {}".format(Timer.format_time(elapsed_time)))
+        layout.label(text="Time Spent: {}".format(Timer.format_time(0)))
 
         # Buttons
         layout.operator("timer.start", text="Start", icon='PLAY')

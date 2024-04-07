@@ -79,11 +79,10 @@ class PT_ProjectTimer(bpy.types.Panel):
 
     def draw(self, context):
         layout = self.layout
-        global elapsed_time, running_time
 
         # Display elapsed time
         #layout.label(text="Running Time: %.2f seconds" % running_time)
-        layout.label(text="Time Spent: {}".format(format_time(elapsed_time)))
+        layout.label(text="Time Spent: {}".format(Timer.format_time(elapsed_time)))
 
         # Buttons
         layout.operator("timer.start", text="Start", icon='PLAY')
@@ -99,7 +98,7 @@ class StartTimerOperator(bpy.types.Operator):
     bl_label = "Start Timer"
 
     def execute(self, context):
-        start_timer()
+        Timer.start_timer()
         return {'FINISHED'}
     
 # Operator to stop the timer
@@ -108,7 +107,7 @@ class StopTimerOperator(bpy.types.Operator):
     bl_label = "Stop Timer"
 
     def execute(self, context):
-        stop_timer()
+        Timer.stop_timer()
         return {'FINISHED'}
     
 # Operator to pause the timer
@@ -117,7 +116,7 @@ class PauseTimerOperator(bpy.types.Operator):
     bl_label = "Pause Timer"
 
     def execute(self, context):
-        pause_timer()
+        Timer.pause_timer()
         return {'FINISHED'}
     
 # Operator to resume the timer
@@ -126,7 +125,7 @@ class ResumeTimerOperator(bpy.types.Operator):
     bl_label = "Resume Timer"
 
     def execute(self, context):
-        resume_timer()
+        Timer.resume_timer()
         return {'FINISHED'}
     
 class DisplayCurrentTimeOperator(bpy.types.Operator):
@@ -134,7 +133,7 @@ class DisplayCurrentTimeOperator(bpy.types.Operator):
     bl_label = "Display Current Time"
 
     def execute(self, context):
-        display_running_time()
+        Timer.display_running_time()
         return {'FINISHED'}
 
 # Register classes

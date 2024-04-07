@@ -10,7 +10,20 @@ bl_info = {
 
 import bpy
 import time
-import threading
+
+class Timer:
+    def __init__(self):
+        self.start_time = None
+        self.running_time = 0
+        self.elapsed_time = 0
+        self.paused_time = 0
+        self.resume_time = 0
+        self.is_paused = False
+
+    def start_timer(self):
+        if self.start_timer is None:
+            start_time
+
 
 # Global variables for time tracking
 start_time = None

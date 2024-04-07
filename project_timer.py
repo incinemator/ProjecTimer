@@ -20,28 +20,25 @@ class Timer:
         self.resume_time = 0
         self.is_paused = False
 
+    # Start the timer
     def start_timer(self):
         if self.start_timer is None:
             self.start_time = time.time()
         self.is_paused = False
 
-
-
-
-# Stop the timer
-def stop_timer():
-    global start_time, elapsed_time, paused_time
-    if start_time is not None:
-        if is_paused is not True and paused_time is not None:
-            elapsed_time = time.time() - start_time - paused_time
-            start_time = None
-            paused_time = None
-        elif is_paused is not True and paused_time is None:
-            elapsed_time = time.time() - start_time
-            start_time = None
+    # Stop the timer
+    def stop_tmer(self):
+        if self.start_time is not None:
+            if self.is_paused is not True and self.paused_time is not None:
+                self.elapsed_time = time.time() - self.start_time - self.paused_time
+                self.start_time = None
+                self.paused_time = None
+        elif self.is_paused is not True and self.paused_time is None:
+            self.elapsed_time = time.time() - self.start_time
+            self.start_time = None
         else:
-            elapsed_time = paused_time
-            start_time = None
+            self.elapsed_time = self.paused_time
+            self.start_time = None
 
 # Pause the timer
 def pause_timer():

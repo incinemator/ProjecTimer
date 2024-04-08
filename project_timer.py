@@ -69,6 +69,8 @@ class Timer:
         self.hours = int(self.seconds//3600)
         return "{:02d}:{:02d}:{:02d}".format(self.hours, self.minutes, self.seconds)
     
+timer = Timer()
+    
 # UI
 class PT_ProjectTimer(bpy.types.Panel):
     bl_label = "ProjecTimer"
@@ -78,12 +80,11 @@ class PT_ProjectTimer(bpy.types.Panel):
     bl_category = 'Timer'
 
     def draw(self, context):
-        self.timer = Timer
         layout = self.layout
 
         # Display elapsed time
         #layout.label(text="Running Time: %.2f seconds" % running_time)
-        layout.label(text="Time Spent: {}".format(self.timer.format_time(self.timer.display_running_time)))
+        layout.label(text="Time Spent: {}".format(timer.format_time(timer.display_running_time)))
 
         # Buttons
         layout.operator("timer.start", text="Start", icon='PLAY')

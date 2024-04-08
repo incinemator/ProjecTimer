@@ -27,7 +27,7 @@ class Timer:
         self.is_paused = False
 
     # Stop the timer
-    def stop_tmer(self):
+    def stop_timer(self):
         if self.start_time is not None:
             if self.is_paused is not True and self.paused_time is not None:
                 self.elapsed_time = time.time() - self.start_time - self.paused_time
@@ -78,11 +78,12 @@ class PT_ProjectTimer(bpy.types.Panel):
     bl_category = 'Timer'
 
     def draw(self, context):
+        self.timer = Timer
         layout = self.layout
 
         # Display elapsed time
         #layout.label(text="Running Time: %.2f seconds" % running_time)
-        layout.label(text="Time Spent: {}".format(Timer.format_time(0)))
+        layout.label(text="Time Spent: {}".format(self.timer.format_time(0)))
 
         # Buttons
         layout.operator("timer.start", text="Start", icon='PLAY')

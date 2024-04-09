@@ -69,7 +69,7 @@ class TimerPropertyGroup(bpy.types.PropertyGroup):
         return "{:02d}:{:02d}:{:02d}".format(self.hours, self.minutes, self.seconds)
     
 class TimerProperties(bpy.types.PropertyGroup):
-    timer: bpy.props.PointerProperty(type=Timer)
+    timer: bpy.props.PointerProperty(type=TimerPropertyGroup)
   
 # UI
 class PT_ProjectTimer(bpy.types.Panel):

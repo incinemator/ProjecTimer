@@ -65,11 +65,7 @@ class TimerPropertyGroup(bpy.types.PropertyGroup):
         self.minutes = int((self.seconds % 3600)//60)
         self.hours = int(self.seconds//3600)
         return "{:02d}:{:02d}:{:02d}".format(self.hours, self.minutes, self.seconds)
-
-class TimerProperties(bpy.types.PropertyGroup):
-    timer: bpy.props.PointerProperty(type=Timer)
-
-    
+  
 # UI
 class PT_ProjectTimer(bpy.types.Panel):
     bl_label = "ProjecTimer"
@@ -82,7 +78,7 @@ class PT_ProjectTimer(bpy.types.Panel):
         layout = self.layout
 
         # Display elapsed time
-        layout.label(text="Running Time: {.2f} seconds" .format(timer.display_running_time()))
+        layout.label(text="Running Time: {.2f} seconds" .format(timer.display()))
 
         # Buttons
         layout.operator("timer.start", text="Start", icon='PLAY')
@@ -129,7 +125,7 @@ class Timer_OT_Resume(bpy.types.Operator):
         return {'FINISHED'}
     
 class Timer_OT_Display(bpy.types.Operator):
-    bl_idname = "timer.display_current_time"
+    bl_idname = "timer.display"
     bl_label = "Display Current Time"
 
     def execute(self, context):

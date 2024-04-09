@@ -14,7 +14,7 @@ import time
 class TimerPropertyGroup(bpy.types.PropertyGroup):
     """Creates a timer using python's time()"""
     start_time: bpy.props.FloatProperty(default=0)
-    is_running: bpy.props.BoolProperty(default=False)
+    is_paused: bpy.props.BoolProperty(default=False)
     elapsed_time: bpy.props.FloatProperty(default=0)
     # Start the timer
     def start_timer(self):
@@ -146,13 +146,13 @@ classes = (
     PauseTimerOperator,
     ResumeTimerOperator,
     DisplayCurrentTimeOperator,
-    TimerProperties
+    TimerPropertyGroup
 )
 
 def register():
     for cls in classes:
         bpy.utils.register_class(cls)
-    bpy.types.Scene.timer = bpy.props.PointerProperty(type=TimerProperties)
+    bpy.types.Scene.timer = bpy.props.PointerProperty(type=TimerPropertyGroup)
 
 
 def unregister():

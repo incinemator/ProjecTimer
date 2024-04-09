@@ -12,7 +12,7 @@ import bpy
 import time
 
 class TimerPropertyGroup(bpy.types.PropertyGroup):
-
+    """Creates a timer using python's time()"""
     # Start the timer
     def start_timer(self):
         if self.start_timer is None:

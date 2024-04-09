@@ -116,7 +116,7 @@ class PauseTimerOperator(bpy.types.Operator):
     bl_label = "Pause Timer"
 
     def execute(self, context):
-        Timer.pause_timer()
+        context.scene.pause_timer()
         return {'FINISHED'}
     
 # Operator to resume the timer
@@ -125,7 +125,7 @@ class ResumeTimerOperator(bpy.types.Operator):
     bl_label = "Resume Timer"
 
     def execute(self, context):
-        Timer.resume_timer()
+        context.scene.resume_timer()
         return {'FINISHED'}
     
 class DisplayCurrentTimeOperator(bpy.types.Operator):

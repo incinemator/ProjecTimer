@@ -12,13 +12,6 @@ import bpy
 import time
 
 class TimerPropertyGroup(bpy.types.PropertyGroup):
-    def __init__(self, elapsed_time):
-        self.start_time = None
-        self.running_time = 0
-        self.elapsed_time = elapsed_time
-        self.paused_time = 0
-        self.resume_time = 0
-        self.is_paused = False
 
     # Start the timer
     def start_timer(self):

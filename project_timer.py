@@ -60,6 +60,7 @@ class Timer:
             elif self.paused_time is not None:
                 self.resume_time = time.time()
                 self.elapsed_time = time.time() - self.resume_time + self.paused_time
+        return self.elapsed_time
 
     # Format time into HH:MM:SS
     def format_time(self, seconds):

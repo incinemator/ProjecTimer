@@ -128,22 +128,22 @@ class Timer_OT_Resume(bpy.types.Operator):
         context.scene.resume_timer()
         return {'FINISHED'}
     
-class DisplayCurrentTimeOperator(bpy.types.Operator):
+class Timer_OT_Display(bpy.types.Operator):
     bl_idname = "timer.display_current_time"
     bl_label = "Display Current Time"
 
     def execute(self, context):
-        Timer.display_running_time()
+        context.scene.display_running_time()
         return {'FINISHED'}
 
 # Register classes
 classes = (
     PT_ProjectTimer,
-    StartTimerOperator,
-    StopTimerOperator,
-    PauseTimerOperator,
-    ResumeTimerOperator,
-    DisplayCurrentTimeOperator,
+    Timer_OT_Start,
+    Timer_OT_Stop,
+    Timer_OT_Pause,
+    Timer_OT_Resume,
+    Timer_OT_Display,
     TimerPropertyGroup
 )
 

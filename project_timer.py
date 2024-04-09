@@ -14,7 +14,8 @@ import time
 class TimerPropertyGroup(bpy.types.PropertyGroup):
     """Creates a timer using python's time()"""
     start_time: bpy.props.FloatProperty(default=0)
-    
+    is_running: bpy.props.BoolProperty(default=False)
+    elapsed_time: bpy.props.FloatProperty(default=0)
     # Start the timer
     def start_timer(self):
         if self.start_timer is None:

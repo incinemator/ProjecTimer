@@ -41,7 +41,6 @@ class TimerPropertyGroup(bpy.types.PropertyGroup):
 class TimerProperties(bpy.types.PropertyGroup):
     timer: bpy.props.PointerProperty(type=Timer)
 
-
     # Pause the timer
     def pause_timer(self):
         if self.is_paused is not True:

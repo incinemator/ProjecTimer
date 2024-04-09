@@ -120,7 +120,7 @@ class Timer_OT_Pause(bpy.types.Operator):
         return {'FINISHED'}
     
 # Operator to resume the timer
-class ResumeTimerOperator(bpy.types.Operator):
+class Timer_OT_Resume(bpy.types.Operator):
     bl_idname = "timer.resume"
     bl_label = "Resume Timer"
 

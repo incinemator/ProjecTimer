@@ -11,7 +11,7 @@ bl_info = {
 import bpy
 import time
 
-class Timer:
+class TimerPropertyGroup(bpy.types.PropertyGroup):
     def __init__(self, elapsed_time):
         self.start_time = None
         self.running_time = 0

@@ -17,7 +17,7 @@ class TimerPropertyGroup(bpy.types.PropertyGroup):
     is_paused: bpy.props.BoolProperty(default=False)
     elapsed_time: bpy.props.FloatProperty(default=0)
     paused_time: bpy.props.FloatProperty(default=0)
-    
+
     # Start the timer
     def start_timer(self):
         if self.start_timer is None:
@@ -37,6 +37,10 @@ class TimerPropertyGroup(bpy.types.PropertyGroup):
         else:
             self.elapsed_time = self.paused_time
             self.start_time = None
+
+class TimerProperties(bpy.types.PropertyGroup):
+    timer: bpy.props.PointerProperty(type=Timer)
+
 
     # Pause the timer
     def pause_timer(self):

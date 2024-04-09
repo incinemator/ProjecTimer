@@ -69,7 +69,7 @@ class Timer:
         self.hours = int(self.seconds//3600)
         return "{:02d}:{:02d}:{:02d}".format(self.hours, self.minutes, self.seconds)
     
-timer = Timer()
+
     
 # UI
 class PT_ProjectTimer(bpy.types.Panel):
@@ -79,6 +79,7 @@ class PT_ProjectTimer(bpy.types.Panel):
     bl_region_type = 'UI'
     bl_category = 'Timer'
 
+    timer = Timer()
     def draw(self, context):
         layout = self.layout
 

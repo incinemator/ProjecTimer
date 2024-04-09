@@ -38,9 +38,6 @@ class TimerPropertyGroup(bpy.types.PropertyGroup):
             self.elapsed_time = self.paused_time
             self.start_time = None
 
-class TimerProperties(bpy.types.PropertyGroup):
-    timer: bpy.props.PointerProperty(type=Timer)
-
     # Pause the timer
     def pause_timer(self):
         if self.is_paused is not True:
@@ -70,6 +67,9 @@ class TimerProperties(bpy.types.PropertyGroup):
         self.minutes = int((self.seconds % 3600)//60)
         self.hours = int(self.seconds//3600)
         return "{:02d}:{:02d}:{:02d}".format(self.hours, self.minutes, self.seconds)
+    
+class TimerProperties(bpy.types.PropertyGroup):
+    timer: bpy.props.PointerProperty(type=Timer)
   
 # UI
 class PT_ProjectTimer(bpy.types.Panel):

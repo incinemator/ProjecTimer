@@ -111,7 +111,7 @@ class Timer_OT_Stop(bpy.types.Operator):
         return {'FINISHED'}
     
 # Operator to pause the timer
-class PauseTimerOperator(bpy.types.Operator):
+class Timer_OT_Pause(bpy.types.Operator):
     bl_idname = "timer.pause"
     bl_label = "Pause Timer"
 

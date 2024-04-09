@@ -149,17 +149,19 @@ classes = (
     StopTimerOperator,
     PauseTimerOperator,
     ResumeTimerOperator,
-    DisplayCurrentTimeOperator
+    DisplayCurrentTimeOperator,
+    TimerProperties
 )
 
 def register():
     for cls in classes:
         bpy.utils.register_class(cls)
+    bpy.types.Scene.timer = bpy.props.PointerProperty(type=TimerProperties)
 
 
 def unregister():
     for cls in classes:
         bpy.utils.unregister_class(cls)
-
+    del bpy.types.Scene.timer
 if __name__ == "__main__":
     register()

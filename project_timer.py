@@ -59,6 +59,11 @@ class TimerPropertyGroup(bpy.types.PropertyGroup):
                 self.resume_time = time.time()
                 self.elapsed_time = time.time() - self.resume_time + self.paused_time
         return self.elapsed_time
+    
+    def log(self, message):
+        if self.log_file is None:
+            self.log_file = open("timer_log.txt", "a")
+        self.log_file.write("{}: {}\n".format(time.strftime("%Y-%m-%d %H:%M:%S"), message)) 
 
     # Format time into HH:MM:SS
     def format_time(self, seconds):

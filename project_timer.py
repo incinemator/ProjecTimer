@@ -83,9 +83,10 @@ class PT_ProjectTimer(bpy.types.Panel):
 
     def draw(self, context):
         layout = self.layout
+        timer = 
 
         # Display elapsed time
-        layout.label(text="Running Time: {.2f} seconds" .format(context.scene.timer.format_time(context.scene.timer.display())))
+        layout.label(text="Running Time: {.2f} seconds" .format(context.scene.timer.format_time(context.scene.timer.display_running_time())))
 
         # Buttons
         layout.operator("timer.start", text="Start", icon='PLAY')

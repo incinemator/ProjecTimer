@@ -3,6 +3,7 @@ Blender add-on to help artists track the time spent working on a project.
 
 ## Features
 - Start, stop, pause, and resume functionality
+- Automatic timer start when opening Blender
 - Display of elapsed time in HH:MM:SS format
 - Integration directly within the Blender UI
 

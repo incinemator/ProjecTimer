@@ -157,11 +157,20 @@ def register():
     for cls in classes:
         bpy.utils.register_class(cls)
     bpy.types.Scene.timer = bpy.props.PointerProperty(type=TimerPropertyGroup)
+    # Register the handler to start the timer when Blender starts or when a .blend file is loaded
+    bpy.app.handlers.load_post.append(start_timer)
 
 
 def unregister():
     for cls in classes:
         bpy.utils.unregister_class(cls)
     del bpy.types.Scene.timer
+    # Unregister the handler
+    bpy.app.handlers.load_post.remove(start_timer)
+
+def start_timer(dummy):
+    bpy.context.scene.timer.start()
+
+
 if __name__ == "__main__":
     register()

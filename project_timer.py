@@ -52,13 +52,10 @@ class TimerPropertyGroup(bpy.types.PropertyGroup):
             self.elapsed_time = self.paused_time
 
     def display_running_time(self):
-        if self.start_time is not None and self.is_paused is not True:
-            if self.paused_time is None:
-                self.elapsed_time = time.time() - self.start_time
-            elif self.paused_time is not None:
-                self.resume_time = time.time()
-                self.elapsed_time = time.time() - self.resume_time + self.paused_time
-        return self.elapsed_time
+        if not self.is_paused:
+            return self.elapsed_time + (time.time() - self.start_time)
+        else:
+            return self.elapsed_time
     
     def log(self, message):
         if self.log_file is None:

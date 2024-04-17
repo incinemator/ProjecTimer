@@ -18,6 +18,7 @@ class TimerPropertyGroup(bpy.types.PropertyGroup):
     elapsed_time: bpy.props.FloatProperty(default=0)
     paused_time: bpy.props.FloatProperty(default=0)
 
+
     # Start the timer
     def start_timer(self):
         if self.start_timer is None:
@@ -57,6 +58,7 @@ class TimerPropertyGroup(bpy.types.PropertyGroup):
         else:
             return self.elapsed_time
     
+    # Write timestamps to a .txt file
     def log(self, message):
         if self.log_file is None:
             self.log_file = open("timer_log.txt", "a")

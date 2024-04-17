@@ -17,7 +17,7 @@ class TimerPropertyGroup(bpy.types.PropertyGroup):
     is_paused: bpy.props.BoolProperty(default=False)
     elapsed_time: bpy.props.FloatProperty(default=0)
     paused_time: bpy.props.FloatProperty(default=0)
-    log_file: bpy.props.PointerProperty(type=bpy.types.TextIO)
+    log_file_path: bpy.props.StringProperty(default="timer_log.txt")
 
 
     # Start the timer
@@ -61,9 +61,8 @@ class TimerPropertyGroup(bpy.types.PropertyGroup):
     
     # Write timestamps to a .txt file
     def log(self, message):
-        if self.log_file is None:
-            self.log_file = open("timer_log.txt", "a")
-        self.log_file.write("{}: {}\n".format(time.strftime("%Y-%m-%d %H:%M:%S"), message)) 
+        with open(self.log_file_path. "a") as log_file:
+        log_file.write("{}: {}\n".format(time.strftime("%Y-%m-%d %H:%M:%S"), message))
 
     # Format time into HH:MM:SS
     def format_time(self, seconds):

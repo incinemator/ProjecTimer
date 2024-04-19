@@ -22,10 +22,8 @@ class TimerPropertyGroup(bpy.types.PropertyGroup):
 
     # Start the timer
     def start(self):
-        if self.start_time is 0:
-            self.start_time = time.time()
-            self.is_paused = False
-            self.log("Start")
+        self.start_time = time.time()
+        self.log("Start")
 
     # Stop the timer
     def stop(self):

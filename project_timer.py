@@ -17,7 +17,7 @@ class TimerPropertyGroup(bpy.types.PropertyGroup):
     is_running: bpy.props.BoolProperty(default=False)
     elapsed_time: bpy.props.FloatProperty(default=0)
     paused_time: bpy.props.FloatProperty(default=0)
-    log_file_path: bpy.props.StringProperty(default="timer_log.txt")
+    log_file_path: bpy.props.StringProperty(default="D:/Blender Projects/timer_log.txt")
 
 
     # Start the timer
@@ -28,22 +28,12 @@ class TimerPropertyGroup(bpy.types.PropertyGroup):
 
     # Stop the timer
     def stop(self):
-        if self.start_time is not 0:
-            if self.is_running and self.paused_time is not 0:
-                self.elapsed_time = time.time() - self.start_time - self.paused_time
-                self.start_time = 0
-                self.paused_time = 0
-        elif self.is_running and self.paused_time is 0:
-            self.elapsed_time = time.time() - self.start_time
+        if self.is_running:
+            self.elapsed_time += time.time() - self.start_time
             self.start_time = 0
             self.paused_time = 0
-        elif not self.is_running and self.paused_time is 0:
-            self.elapsed_time = self.paused_time
-            self.start_time = 0
-            self.paused_time = 0
-        elif not self.is_running and self.paused_time is not 0:
-            self.elapsed_time = time.time() - self.paused_time
-            self.paused_time = 0
+            self.is_running = False
+            self.log("Stop")
 
 
     # Pause the timer

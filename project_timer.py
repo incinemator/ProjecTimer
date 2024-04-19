@@ -148,7 +148,7 @@ class Timer_OT_Display(bpy.types.Operator):
     bl_label = "Display Current Time"
 
     def execute(self, context):
-        context.scene.display_running_time()
+        context.scene.timer.display_running_time()
         return {'FINISHED'}
 
 # Register classes

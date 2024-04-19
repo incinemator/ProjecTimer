@@ -47,6 +47,7 @@ class TimerPropertyGroup(bpy.types.PropertyGroup):
             self.elapsed_time = time.time() - self.start_time
             self.is_paused = True
             self.paused_time = self.elapsed_time
+            self.log("Pause")
 
     # Resume the timer
     def resume_timer(self):

@@ -52,8 +52,8 @@ class TimerPropertyGroup(bpy.types.PropertyGroup):
     # Resume the timer
     def resume_timer(self):
         if self.is_paused:
-            self.is_paused = False
             self.elapsed_time = self.paused_time
+            self.is_paused = False
 
     def display_running_time(self):
         if not self.is_paused:
@@ -63,8 +63,8 @@ class TimerPropertyGroup(bpy.types.PropertyGroup):
     
     # Write timestamps to a .txt file
     def log(self, message):
-        with open(self.log_file_path. "a") as log_file:
-        log_file.write("{}: {}\n".format(time.strftime("%Y-%m-%d %H:%M:%S"), message))
+        with open(self.log_file_path, "a") as log_file:
+            log_file.write("{}: {}\n".format(time.strftime("%Y-%m-%d %H:%M:%S"), message))
 
     # Format time into HH:MM:SS
     def format_time(self, seconds):

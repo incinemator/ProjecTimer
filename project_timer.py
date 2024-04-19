@@ -29,39 +29,39 @@ class TimerPropertyGroup(bpy.types.PropertyGroup):
     # Stop the timer
     def stop(self):
         if self.start_time is not 0:
-            if self.is_paused is not True and self.paused_time is not 0:
+            if self.is_running and self.paused_time is not 0:
                 self.elapsed_time = time.time() - self.start_time - self.paused_time
                 self.start_time = 0
                 self.paused_time = 0
-        elif self.is_paused is not True and self.paused_time is 0:
+        elif self.is_running and self.paused_time is 0:
             self.elapsed_time = time.time() - self.start_time
             self.start_time = 0
             self.paused_time = 0
-        elif self.is_paused and self.paused_time is 0:
+        elif not self.is_running and self.paused_time is 0:
             self.elapsed_time = self.paused_time
             self.start_time = 0
             self.paused_time = 0
-        elif self.is_paused and self.paused_time is not 0:
+        elif not self.is_running and self.paused_time is not 0:
             self.elapsed_time = time.time() - self.paused_time
             self.paused_time = 0
 
 
     # Pause the timer
     def pause(self):
-        if not self.is_paused:
+        if self.is_running:
             self.elapsed_time = time.time() - self.start_time
-            self.is_paused = True
+            self.is_running = False
             self.paused_time = self.elapsed_time
             self.log("Pause")
 
     # Resume the timer
     def resume(self):
-        if self.is_paused:
+        if not self.is_running:
             self.elapsed_time = self.paused_time
-            self.is_paused = False
+            self.is_running = True
 
     def display_running_time(self):
-        if not self.is_paused:
+        if self.is_running:
             return self.elapsed_time + (time.time() - self.start_time)
         else:
             return self.elapsed_time

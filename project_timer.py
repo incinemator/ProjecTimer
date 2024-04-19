@@ -156,12 +156,13 @@ classes = (
 )
 
 def register():
-    for cls in classes:
+    for cls in reversed(classes):
         bpy.utils.register_class(cls)
     bpy.types.Scene.timer = bpy.props.PointerProperty(type=TimerPropertyGroup)
     # Register the handler to start the timer when Blender starts or when a .blend file is loaded
     bpy.app.handlers.load_post.append(start_timer)
     # Register the handler to close the log file when Blender exits
+    bpy.app.handlers.save_pre.append(stop_timer)
 
 
 def unregister():
@@ -170,9 +171,13 @@ def unregister():
     del bpy.types.Scene.timer
     # Unregister the handler
     bpy.app.handlers.load_post.remove(start_timer)
+    bpy.app.handlers.save_pre.remove(stop_timer)
 
 def start_timer(dummy):
     bpy.context.scene.timer.start()
+
+def stop_timer(dummy):
+    bpy.context.scene.timer.stop()
 
 
 if __name__ == "__main__":

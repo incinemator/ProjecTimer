@@ -22,13 +22,13 @@ class TimerPropertyGroup(bpy.types.PropertyGroup):
 
     # Start the timer
     def start(self):
-        if self.start_timer is None:
+        if self.start_time is None:
             self.start_time = time.time()
             self.is_paused = False
             self.log("Start")
 
     # Stop the timer
-    def stop_timer(self):
+    def stop(self):
         if self.start_time is not None:
             if self.is_paused is not True and self.paused_time is not None:
                 self.elapsed_time = time.time() - self.start_time - self.paused_time

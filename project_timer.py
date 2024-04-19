@@ -23,7 +23,6 @@ class TimerPropertyGroup(bpy.types.PropertyGroup):
     # Start the timer
     def start(self):
         if not self.is_running:
-            self.start_time = 0
             self.start_time = time.time()
             self.log("Start")
 

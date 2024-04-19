@@ -29,11 +29,11 @@ class TimerPropertyGroup(bpy.types.PropertyGroup):
 
     # Stop the timer
     def stop(self):
-        if self.start_time is not None:
-            if self.is_paused is not True and self.paused_time is not None:
+        if self.start_time is not 0:
+            if self.is_paused is not True and self.paused_time is not 0:
                 self.elapsed_time = time.time() - self.start_time - self.paused_time
-                self.start_time = None
-                self.paused_time = None
+                self.start_time = 0
+                self.paused_time = 0
         elif self.is_paused is not True and self.paused_time is None:
             self.elapsed_time = time.time() - self.start_time
             self.start_time = None

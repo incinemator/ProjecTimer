@@ -44,8 +44,8 @@ class TimerPropertyGroup(bpy.types.PropertyGroup):
     # Pause the timer
     def pause_timer(self):
         if not self.is_paused:
-            self.is_paused = True
             self.elapsed_time = time.time() - self.start_time
+            self.is_paused = True
             self.paused_time = self.elapsed_time
 
     # Resume the timer

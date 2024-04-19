@@ -90,7 +90,7 @@ class PT_ProjectTimer(bpy.types.Panel):
         timer = context.scene.timer
 
         # Display elapsed time
-        layout.label(text="Running Time: {.2f} seconds" .format(timer.format_time(timer.display_running_time())))
+        # layout.label(text="Running Time: {.2f} seconds" .format(timer.format_time(timer.display_running_time())))
         layout.label(text="Running Time: {.2f} seconds" .format(timer.display_running_time()))
 
         # Buttons

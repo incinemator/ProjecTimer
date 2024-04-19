@@ -67,12 +67,12 @@ class TimerPropertyGroup(bpy.types.PropertyGroup):
             log_file.write("{}: {}\n".format(time.strftime("%Y-%m-%d %H:%M:%S"), message))
 
     # Format time into HH:MM:SS
-    def format_time(self, seconds):
-        self.seconds = seconds
-        self.seconds = int(self.seconds % 60)
-        self.minutes = int((self.seconds % 3600)//60)
-        self.hours = int(self.seconds//3600)
-        return "{:02d}:{:02d}:{:02d}".format(self.hours, self.minutes, self.seconds)
+    # def format_time(self, seconds):
+    #     self.seconds = seconds
+    #     self.seconds = int(self.seconds % 60)
+    #     self.minutes = int((self.seconds % 3600)//60)
+    #     self.hours = int(self.seconds//3600)
+    #     return "{:02d}:{:02d}:{:02d}".format(self.hours, self.minutes, self.seconds)
     
 class TimerProperties(bpy.types.PropertyGroup):
     timer: bpy.props.PointerProperty(type=TimerPropertyGroup)
@@ -91,6 +91,7 @@ class PT_ProjectTimer(bpy.types.Panel):
 
         # Display elapsed time
         layout.label(text="Running Time: {.2f} seconds" .format(timer.format_time(timer.display_running_time())))
+        layout.label(text="Running Time: {.2f} seconds" .format(timer.display_running_time()))
 
         # Buttons
         layout.operator("timer.start", text="Start", icon='PLAY')

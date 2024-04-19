@@ -107,7 +107,7 @@ class Timer_OT_Start(bpy.types.Operator):
     bl_label = "Start Timer"
 
     def execute(self, context):
-        context.scene.start()
+        context.scene.timer.start()
         return {'FINISHED'}
     
 # Operator to stop the timer
@@ -116,7 +116,7 @@ class Timer_OT_Stop(bpy.types.Operator):
     bl_label = "Stop Timer"
 
     def execute(self, context):
-        context.scene.stop()
+        context.scene.timer.stop()
         return {'FINISHED'}
     
 # Operator to pause the timer

@@ -134,7 +134,7 @@ class Timer_OT_Resume(bpy.types.Operator):
     bl_label = "Resume Timer"
 
     def execute(self, context):
-        context.scene.resume_timer()
+        context.scene.resume()
         return {'FINISHED'}
     
 class Timer_OT_Display(bpy.types.Operator):

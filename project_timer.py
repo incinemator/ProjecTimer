@@ -23,14 +23,6 @@ paused_time = 0
 resume_time = 0
 is_paused = 0
 
-class TimerPropertyGroup(bpy.types.PropertyGroup):
-    """Creates a timer using python's time()"""
-    start_time: bpy.props.FloatProperty(default=0)
-    is_running: bpy.props.BoolProperty(default=False)
-    elapsed_time: bpy.props.FloatProperty(default=0)
-    paused_time: bpy.props.FloatProperty(default=0)
-    log_file_path: bpy.props.StringProperty(default="D:/Blender Projects/timer_log.txt")
-
 
     # Start the timer
     def start(self):

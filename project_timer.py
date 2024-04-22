@@ -43,8 +43,8 @@ def stop():
 
 # Pause the timer
 def pause():
+    global start_time, elapsed_time, paused_time
     if is_running:
-        global start_time, elapsed_time, paused_time
         elapsed_time = time.time() - start_time
         is_running = False
         paused_time = elapsed_time

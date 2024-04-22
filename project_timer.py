@@ -149,7 +149,6 @@ classes = (
     Timer_OT_Pause,
     Timer_OT_Resume,
     Timer_OT_Display,
-    TimerPropertyGroup
 )
 
 def register():

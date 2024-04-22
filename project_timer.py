@@ -21,7 +21,7 @@ elapsed_time = 0
 paused_time = 0
 resume_time = 0
 is_running = True
-log_filepath = r"/path/to/your/project.txt"
+log_file_path = r"/path/to/your/project.txt"
 
 
 # Start the timer

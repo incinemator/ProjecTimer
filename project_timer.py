@@ -89,6 +89,7 @@ class PT_ProjectTimer(bpy.types.Panel):
     bl_category = 'Timer'
 
     def draw(self, context):
+        global elapsed_time, running_time
         layout = self.layout
         box = layout.box()
 

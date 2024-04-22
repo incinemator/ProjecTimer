@@ -72,9 +72,6 @@ is_paused = 0
     #     self.minutes = int((self.seconds % 3600)//60)
     #     self.hours = int(self.seconds//3600)
     #     return "{:02d}:{:02d}:{:02d}".format(self.hours, self.minutes, self.seconds)
-    
-class TimerProperties(bpy.types.PropertyGroup):
-    timer: bpy.props.PointerProperty(type=TimerPropertyGroup)
   
 # UI
 class PT_ProjectTimer(bpy.types.Panel):
@@ -106,7 +103,7 @@ class Timer_OT_Start(bpy.types.Operator):
     bl_label = "Start Timer"
 
     def execute(self, context):
-        context.scene.timer.start()
+        context.scene.start()
         return {'FINISHED'}
     
 # Operator to stop the timer
@@ -115,7 +112,7 @@ class Timer_OT_Stop(bpy.types.Operator):
     bl_label = "Stop Timer"
 
     def execute(self, context):
-        context.scene.timer.stop()
+        context.scene.stop()
         return {'FINISHED'}
     
 # Operator to pause the timer
@@ -124,7 +121,7 @@ class Timer_OT_Pause(bpy.types.Operator):
     bl_label = "Pause Timer"
 
     def execute(self, context):
-        context.scene.timer.pause()
+        context.scene.pause()
         return {'FINISHED'}
     
 # Operator to resume the timer
@@ -133,7 +130,7 @@ class Timer_OT_Resume(bpy.types.Operator):
     bl_label = "Resume Timer"
 
     def execute(self, context):
-        context.scene.timer.resume()
+        context.scene.resume()
         return {'FINISHED'}
     
 class Timer_OT_Display(bpy.types.Operator):
@@ -141,7 +138,7 @@ class Timer_OT_Display(bpy.types.Operator):
     bl_label = "Display Current Time"
 
     def execute(self, context):
-        context.scene.timer.display_running_time()
+        context.scene.display_running_time()
         return {'FINISHED'}
 
 # Register classes

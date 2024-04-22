@@ -24,54 +24,54 @@ resume_time = 0
 is_paused = 0
 
 
-    # Start the timer
-    def start(self):
-        if not self.is_running:
-            self.start_time = time.time()
-            self.log("Start")
+# Start the timer
+def start(self):
+    if not self.is_running:
+        self.start_time = time.time()
+        self.log("Start")
 
-    # Stop the timer
-    def stop(self):
-        if self.is_running:
-            self.elapsed_time += time.time() - self.start_time
-            self.start_time = 0
-            self.paused_time = 0
-            self.is_running = False
-            self.log("Stop")
+# Stop the timer
+def stop(self):
+    if self.is_running:
+        self.elapsed_time += time.time() - self.start_time
+        self.start_time = 0
+        self.paused_time = 0
+        self.is_running = False
+        self.log("Stop")
 
 
-    # Pause the timer
-    def pause(self):
-        if self.is_running:
-            self.elapsed_time = time.time() - self.start_time
-            self.is_running = False
-            self.paused_time = self.elapsed_time
-            self.log("Pause")
+# Pause the timer
+def pause(self):
+    if self.is_running:
+        self.elapsed_time = time.time() - self.start_time
+        self.is_running = False
+        self.paused_time = self.elapsed_time
+        self.log("Pause")
 
-    # Resume the timer
-    def resume(self):
-        if not self.is_running:
-            self.elapsed_time = self.paused_time
-            self.is_running = True
+# Resume the timer
+def resume(self):
+    if not self.is_running:
+        self.elapsed_time = self.paused_time
+        self.is_running = True
 
-    def display_running_time(self):
-        if self.is_running:
-            return self.elapsed_time + (time.time() - self.start_time)
-        else:
-            return self.elapsed_time
-    
-    # Write timestamps to a .txt file
-    def log(self, message):
-        with open(self.log_file_path, "a") as log_file:
-            log_file.write("{}: {}\n".format(time.strftime("%Y-%m-%d %H:%M:%S"), message))
+def display_running_time(self):
+    if self.is_running:
+        return self.elapsed_time + (time.time() - self.start_time)
+    else:
+        return self.elapsed_time
 
-    # Format time into HH:MM:SS
-    # def format_time(self, seconds):
-    #     self.seconds = seconds
-    #     self.seconds = int(self.seconds % 60)
-    #     self.minutes = int((self.seconds % 3600)//60)
-    #     self.hours = int(self.seconds//3600)
-    #     return "{:02d}:{:02d}:{:02d}".format(self.hours, self.minutes, self.seconds)
+# Write timestamps to a .txt file
+def log(self, message):
+    with open(self.log_file_path, "a") as log_file:
+        log_file.write("{}: {}\n".format(time.strftime("%Y-%m-%d %H:%M:%S"), message))
+
+# Format time into HH:MM:SS
+# def format_time(self, seconds):
+#     self.seconds = seconds
+#     self.seconds = int(self.seconds % 60)
+#     self.minutes = int((self.seconds % 3600)//60)
+#     self.hours = int(self.seconds//3600)
+#     return "{:02d}:{:02d}:{:02d}".format(self.hours, self.minutes, self.seconds)
   
 # UI
 class PT_ProjectTimer(bpy.types.Panel):

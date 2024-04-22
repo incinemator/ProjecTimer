@@ -20,20 +20,20 @@ running_time = 0
 elapsed_time = 0
 paused_time = 0
 resume_time = 0
-is_paused = 0
+is_running = True
 
 
 # Start the timer
 def start():
-    if not is_paused:
+    if is_running:
         global start_time
         start_time = time.time()
         log("Start")
 
 # Stop the timer
 def stop():
-    if not is_paused:
-        global elapsed_time, start_time
+    if is_running:
+        global elapsed_time, start_time, paused_time, is_running
         elapsed_time += time.time() - start_time
         start_time = 0
         paused_time = 0
@@ -42,7 +42,7 @@ def stop():
 
 
 # Pause the timer
-def pause(self):
+def pause():
     if self.is_running:
         self.elapsed_time = time.time() - self.start_time
         self.is_running = False

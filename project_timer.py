@@ -43,11 +43,12 @@ def stop():
 
 # Pause the timer
 def pause():
-    if self.is_running:
-        self.elapsed_time = time.time() - self.start_time
-        self.is_running = False
-        self.paused_time = self.elapsed_time
-        self.log("Pause")
+    if is_running:
+        global start_time, elapsed_time, paused_time
+        elapsed_time = time.time() - start_time
+        is_running = False
+        paused_time = elapsed_time
+        log("Pause")
 
 # Resume the timer
 def resume(self):

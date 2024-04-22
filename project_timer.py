@@ -65,13 +65,13 @@ def log(self, message):
     with open(self.log_file_path, "a") as log_file:
         log_file.write("{}: {}\n".format(time.strftime("%Y-%m-%d %H:%M:%S"), message))
 
-# Format time into HH:MM:SS
-# def format_time(self, seconds):
-#     self.seconds = seconds
-#     self.seconds = int(self.seconds % 60)
-#     self.minutes = int((self.seconds % 3600)//60)
-#     self.hours = int(self.seconds//3600)
-#     return "{:02d}:{:02d}:{:02d}".format(self.hours, self.minutes, self.seconds)
+Format time into HH:MM:SS
+def format_time(self, seconds):
+    self.seconds = seconds
+    self.seconds = int(self.seconds % 60)
+    self.minutes = int((self.seconds % 3600)//60)
+    self.hours = int(self.seconds//3600)
+    return "{:02d}:{:02d}:{:02d}".format(self.hours, self.minutes, self.seconds)
   
 # UI
 class PT_ProjectTimer(bpy.types.Panel):

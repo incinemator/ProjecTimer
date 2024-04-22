@@ -60,7 +60,7 @@ def resume():
 
 def display_running_time(self):
     if is_running:
-        return elapsed_time + (time.time() - self.start_time)
+        return elapsed_time + (time.time() - start_time)
     else:
         return elapsed_time
 

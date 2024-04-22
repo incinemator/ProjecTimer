@@ -2,7 +2,7 @@
 bl_info = {
     "name": "ProjecTimer",
     "author": "Giorgos Giannakoudakis",
-    "version": (1, 0),
+    "version": (1, 2),
     "blender": (4, 1, 0),
     "description": "Timer panel to track the time spent on a project ",
     "category": "Productivity",
@@ -10,6 +10,18 @@ bl_info = {
 
 import bpy
 import time
+import threading
+
+# Global variables for time tracking
+# Custom attributes have been tried but they proved
+# to be less practical for this application.
+
+start_time = None
+running_time = 0
+elapsed_time = 0
+paused_time = 0
+resume_time = 0
+is_paused = 0
 
 class TimerPropertyGroup(bpy.types.PropertyGroup):
     """Creates a timer using python's time()"""

@@ -167,11 +167,11 @@ def unregister():
     # bpy.app.handlers.load_post.remove(start_timer)
     # bpy.app.handlers.save_pre.remove(stop_timer)
 
-def start_timer(dummy):
-    bpy.context.scene.timer.start()
+# def start_timer(dummy):
+#     bpy.context.scene.timer.start()
 
-def stop_timer(dummy):
-    bpy.context.scene.timer.stop()
+# def stop_timer(dummy):
+#     bpy.context.scene.timer.stop()
 
 
 if __name__ == "__main__":

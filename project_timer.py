@@ -21,6 +21,7 @@ elapsed_time = 0
 paused_time = None
 resume_time = 0
 is_paused = False
+log_file_path = r"/patth/to/your/blender/file"
 
 # Start the timer
 def start():
@@ -74,6 +75,11 @@ def format_time(seconds):
     minutes = int((seconds % 3600)//60)
     hours = int(seconds//3600)
     return "{:02d}:{:02d}:{:02d}".format(hours, minutes, seconds)
+
+def log(message):
+    global log_file_path
+    with open(log_file_path, "a") as log_file:
+        log_file.write("{}: {}\n".format(time.strftime("%Y-%m-%d %H:%M:%S"), message))
 
 #========================================================================
     

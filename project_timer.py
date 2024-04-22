@@ -23,7 +23,7 @@ resume_time = 0
 is_paused = False
 log_file_path = r"/patth/to/your/blender/file"
 
-# Start the timer
+#============================ Timer Functions ============================ 
 def start():
     global start_time, is_paused, elapsed_time, running_time
     running_time = 0
@@ -31,8 +31,8 @@ def start():
     if start_time is None:
         start_time = time.time()
     is_paused = False
+    log("Start")
 
-#============================ Timer Functions ============================ 
 def stop():
     global start_time, elapsed_time, paused_time
     if start_time is not None:
@@ -46,6 +46,7 @@ def stop():
         else:
             elapsed_time = paused_time
             start_time = None
+    log("Stop")
 
 def pause():
     global is_paused, elapsed_time, paused_time
@@ -53,12 +54,14 @@ def pause():
         is_paused = True
         elapsed_time = time.time() - start_time
         paused_time = elapsed_time
+    log("Pause")
 
 def resume():
     global is_paused, elapsed_time, paused_time
     if is_paused:
         is_paused = False
         elapsed_time = paused_time
+    log("Resume")
 
 def display_running_time():
     global start_time, is_paused, elapsed_time, paused_time, resume_time

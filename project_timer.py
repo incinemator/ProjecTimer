@@ -31,7 +31,7 @@ def start():
         start_time = time.time()
     is_paused = False
 
-# Stop the timer
+#============================ Timer Functions ============================ 
 def stop():
     global start_time, elapsed_time, paused_time
     if start_time is not None:
@@ -46,7 +46,6 @@ def stop():
             elapsed_time = paused_time
             start_time = None
 
-# Pause the timer
 def pause():
     global is_paused, elapsed_time, paused_time
     if is_paused is not True:
@@ -54,7 +53,6 @@ def pause():
         elapsed_time = time.time() - start_time
         paused_time = elapsed_time
 
-# Resume the timer
 def resume():
     global is_paused, elapsed_time, paused_time
     if is_paused:
@@ -76,6 +74,8 @@ def format_time(seconds):
     minutes = int((seconds % 3600)//60)
     hours = int(seconds//3600)
     return "{:02d}:{:02d}:{:02d}".format(hours, minutes, seconds)
+
+#========================================================================
     
 # UI
 class PT_ProjectTimer(bpy.types.Panel):

@@ -65,7 +65,7 @@ def log(self, message):
     with open(self.log_file_path, "a") as log_file:
         log_file.write("{}: {}\n".format(time.strftime("%Y-%m-%d %H:%M:%S"), message))
 
-Format time into HH:MM:SS
+# Format time into HH:MM:SS
 def format_time(self, seconds):
     self.seconds = seconds
     self.seconds = int(self.seconds % 60)

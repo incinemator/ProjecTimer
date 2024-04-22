@@ -52,6 +52,7 @@ def pause():
 
 # Resume the timer
 def resume():
+    global elapsed_time, paused_time
     if not is_running:
         elapsed_time = paused_time
         is_running = True

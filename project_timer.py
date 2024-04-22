@@ -58,11 +58,14 @@ def resume():
         elapsed_time = paused_time
         is_running = True
 
-def display_running_time(self):
-    if is_running:
-        return elapsed_time + (time.time() - start_time)
-    else:
-        return elapsed_time
+def display_running_time():
+    global start_time, is_running, elapsed_time, paused_time, resume_time
+    if start_time is not None and is_running:
+        if paused_time is None:
+            elapsed_time = time.time() - start_time
+        elif paused_time is not None:
+            resume_time = time.time()
+            elapsed_time = time.time() - resume_time + paused_time
 
 # Write timestamps to a .txt file
 def log(message):

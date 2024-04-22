@@ -2,7 +2,7 @@
 bl_info = {
     "name": "ProjecTimer",
     "author": "Giorgos Giannakoudakis",
-    "version": (1, 2),
+    "version": (1, 1),
     "blender": (4, 1, 0),
     "description": "Timer panel to track the time spent on a project ",
     "category": "Productivity",
@@ -18,68 +18,65 @@ import time
 start_time = None
 running_time = 0
 elapsed_time = 0
-paused_time = 0
+paused_time = None
 resume_time = 0
-is_running = True
-log_file_path = r"/path/to/your/project.txt"
-
+is_paused = False
 
 # Start the timer
-def start():
-    global is_running, start_time
-    if is_running:
+def start_timer():
+    global start_time, is_paused, elapsed_time, running_time
+    running_time = 0
+    elapsed_time = 0
+    if start_time is None:
         start_time = time.time()
-        log("Start")
+    is_paused = False
 
 # Stop the timer
-def stop():
-    global is_running, elapsed_time, start_time, paused_time, is_running
-    if is_running:
-        elapsed_time += time.time() - start_time
-        start_time = 0
-        paused_time = 0
-        is_running = False
-        log("Stop")
-
+def stop_timer():
+    global start_time, elapsed_time, paused_time
+    if start_time is not None:
+        if is_paused is not True and paused_time is not None:
+            elapsed_time = time.time() - start_time - paused_time
+            start_time = None
+            paused_time = None
+        elif is_paused is not True and paused_time is None:
+            elapsed_time = time.time() - start_time
+            start_time = None
+        else:
+            elapsed_time = paused_time
+            start_time = None
 
 # Pause the timer
-def pause():
-    global is_running, start_time, elapsed_time, paused_time
-    if is_running:
+def pause_timer():
+    global is_paused, elapsed_time, paused_time
+    if is_paused is not True:
+        is_paused = True
         elapsed_time = time.time() - start_time
-        is_running = False
         paused_time = elapsed_time
-        log("Pause")
 
 # Resume the timer
-def resume():
-    global is_running, elapsed_time, paused_time
-    if not is_running:
+def resume_timer():
+    global is_paused, elapsed_time, paused_time
+    if is_paused:
+        is_paused = False
         elapsed_time = paused_time
-        is_running = True
 
 def display_running_time():
-    global start_time, is_running, elapsed_time, paused_time, resume_time
-    if start_time is not None and is_running:
+    global start_time, is_paused, elapsed_time, paused_time, resume_time
+    if start_time is not None and is_paused is not True:
         if paused_time is None:
             elapsed_time = time.time() - start_time
         elif paused_time is not None:
             resume_time = time.time()
             elapsed_time = time.time() - resume_time + paused_time
 
-# Write timestamps to a .txt file
-def log(message):
-    with open(log_file_path, "a") as log_file:
-        log_file.write("{}: {}\n".format(time.strftime("%Y-%m-%d %H:%M:%S"), message))
-
 # Format time into HH:MM:SS
 def format_time(seconds):
-    seconds = seconds
     seconds = int(seconds % 60)
     minutes = int((seconds % 3600)//60)
     hours = int(seconds//3600)
     return "{:02d}:{:02d}:{:02d}".format(hours, minutes, seconds)
-  
+    
 # UI
 class PT_ProjectTimer(bpy.types.Panel):
     bl_label = "ProjecTimer"
@@ -89,12 +86,13 @@ class PT_ProjectTimer(bpy.types.Panel):
     bl_category = 'Timer'
 
     def draw(self, context):
-        global elapsed_time, running_time
         layout = self.layout
+        global elapsed_time, running_time
         box = layout.box()
 
         # Display elapsed time
-        box.label(text="Running Time: {:.2f} seconds" .format(display_running_time()))
+        #layout.label(text="Running Time: %.2f seconds" % running_time)
+        box.label(text="Time Spent: {}".format(format_time(elapsed_time)))
 
         # Buttons
         layout.operator("timer.start", text="Start", icon='PLAY')
@@ -105,81 +103,67 @@ class PT_ProjectTimer(bpy.types.Panel):
         layout.operator("timer.display_current_time", text="Display Elapsed Time")
 
 # Operator to start the timer
-class Timer_OT_Start(bpy.types.Operator):
+class StartTimerOperator(bpy.types.Operator):
     bl_idname = "timer.start"
     bl_label = "Start Timer"
 
     def execute(self, context):
-        context.scene.start()
+        start_timer()
         return {'FINISHED'}
     
 # Operator to stop the timer
-class Timer_OT_Stop(bpy.types.Operator):
+class StopTimerOperator(bpy.types.Operator):
     bl_idname = "timer.stop"
     bl_label = "Stop Timer"
 
     def execute(self, context):
-        context.scene.stop()
+        stop_timer()
         return {'FINISHED'}
     
 # Operator to pause the timer
-class Timer_OT_Pause(bpy.types.Operator):
+class PauseTimerOperator(bpy.types.Operator):
     bl_idname = "timer.pause"
     bl_label = "Pause Timer"
 
     def execute(self, context):
-        context.scene.pause()
+        pause_timer()
         return {'FINISHED'}
     
 # Operator to resume the timer
-class Timer_OT_Resume(bpy.types.Operator):
+class ResumeTimerOperator(bpy.types.Operator):
     bl_idname = "timer.resume"
     bl_label = "Resume Timer"
 
     def execute(self, context):
-        context.scene.resume()
+        resume_timer()
         return {'FINISHED'}
     
-class Timer_OT_Display(bpy.types.Operator):
-    bl_idname = "timer.display"
+class DisplayCurrentTimeOperator(bpy.types.Operator):
+    bl_idname = "timer.display_current_time"
     bl_label = "Display Current Time"
 
     def execute(self, context):
-        context.scene.display_running_time()
+        display_running_time()
         return {'FINISHED'}
 
 # Register classes
 classes = (
     PT_ProjectTimer,
-    Timer_OT_Start,
-    Timer_OT_Stop,
-    Timer_OT_Pause,
-    Timer_OT_Resume,
-    Timer_OT_Display,
+    StartTimerOperator,
+    StopTimerOperator,
+    PauseTimerOperator,
+    ResumeTimerOperator,
+    DisplayCurrentTimeOperator
 )
 
 def register():
-    for cls in reversed(classes):
+    for cls in classes:
         bpy.utils.register_class(cls)
-    # Register the handler to start the timer when Blender starts or when a .blend file is loaded
-    # bpy.app.handlers.load_post.append(start_timer)
-    # Register the handler to close the log file when Blender exits
-    # bpy.app.handlers.save_pre.append(stop_timer)
 
 
 def unregister():
     for cls in classes:
         bpy.utils.unregister_class(cls)
-    # Unregister the handler
-    # bpy.app.handlers.load_post.remove(start_timer)
-    # bpy.app.handlers.save_pre.remove(stop_timer)
-
-# def start_timer(dummy):
-#     bpy.context.scene.timer.start()
-
-# def stop_timer(dummy):
-#     bpy.context.scene.timer.stop()
-
 
 if __name__ == "__main__":
     register()

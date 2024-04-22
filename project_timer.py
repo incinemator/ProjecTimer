@@ -21,6 +21,7 @@ elapsed_time = 0
 paused_time = 0
 resume_time = 0
 is_running = True
+log_filepath = r"/path/to/your/project.txt"
 
 
 # Start the timer
@@ -43,7 +44,7 @@ def stop():
 
 # Pause the timer
 def pause():
-    global start_time, elapsed_time, paused_time
+    global is_running, start_time, elapsed_time, paused_time
     if is_running:
         elapsed_time = time.time() - start_time
         is_running = False
@@ -52,7 +53,7 @@ def pause():
 
 # Resume the timer
 def resume():
-    global elapsed_time, paused_time
+    global is_running, elapsed_time, paused_time
     if not is_running:
         elapsed_time = paused_time
         is_running = True
@@ -64,8 +65,8 @@ def display_running_time(self):
         return elapsed_time
 
 # Write timestamps to a .txt file
-def log(self, message):
-    with open(self.log_file_path, "a") as log_file:
+def log(message):
+    with open(log_file_path, "a") as log_file:
         log_file.write("{}: {}\n".format(time.strftime("%Y-%m-%d %H:%M:%S"), message))
 
 # Format time into HH:MM:SS

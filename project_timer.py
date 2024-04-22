@@ -25,7 +25,7 @@ is_running = True
 
 # Start the timer
 def start():
-    global start_time
+    global is_running,start_time
     if is_running:
         start_time = time.time()
         log("Start")
@@ -58,10 +58,10 @@ def resume():
         is_running = True
 
 def display_running_time(self):
-    if self.is_running:
-        return self.elapsed_time + (time.time() - self.start_time)
+    if is_running:
+        return elapsed_time + (time.time() - self.start_time)
     else:
-        return self.elapsed_time
+        return elapsed_time
 
 # Write timestamps to a .txt file
 def log(self, message):

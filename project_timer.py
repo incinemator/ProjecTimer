@@ -25,15 +25,15 @@ is_running = True
 
 # Start the timer
 def start():
+    global start_time
     if is_running:
-        global start_time
         start_time = time.time()
         log("Start")
 
 # Stop the timer
 def stop():
+    global elapsed_time, start_time, paused_time, is_running
     if is_running:
-        global elapsed_time, start_time, paused_time, is_running
         elapsed_time += time.time() - start_time
         start_time = 0
         paused_time = 0
@@ -51,10 +51,10 @@ def pause():
         log("Pause")
 
 # Resume the timer
-def resume(self):
-    if not self.is_running:
-        self.elapsed_time = self.paused_time
-        self.is_running = True
+def resume():
+    if not is_running:
+        elapsed_time = paused_time
+        is_running = True
 
 def display_running_time(self):
     if self.is_running:

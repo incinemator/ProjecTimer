@@ -23,7 +23,7 @@ resume_time = 0
 is_paused = False
 
 # Start the timer
-def start_timer():
+def start():
     global start_time, is_paused, elapsed_time, running_time
     running_time = 0
     elapsed_time = 0
@@ -32,7 +32,7 @@ def start_timer():
     is_paused = False
 
 # Stop the timer
-def stop_timer():
+def stop():
     global start_time, elapsed_time, paused_time
     if start_time is not None:
         if is_paused is not True and paused_time is not None:
@@ -47,7 +47,7 @@ def stop_timer():
             start_time = None
 
 # Pause the timer
-def pause_timer():
+def pause():
     global is_paused, elapsed_time, paused_time
     if is_paused is not True:
         is_paused = True
@@ -55,7 +55,7 @@ def pause_timer():
         paused_time = elapsed_time
 
 # Resume the timer
-def resume_timer():
+def resume():
     global is_paused, elapsed_time, paused_time
     if is_paused:
         is_paused = False
@@ -108,7 +108,7 @@ class StartTimerOperator(bpy.types.Operator):
     bl_label = "Start Timer"
 
     def execute(self, context):
-        start_timer()
+        start()
         return {'FINISHED'}
     
 # Operator to stop the timer
@@ -117,7 +117,7 @@ class StopTimerOperator(bpy.types.Operator):
     bl_label = "Stop Timer"
 
     def execute(self, context):
-        stop_timer()
+        stop()
         return {'FINISHED'}
     
 # Operator to pause the timer
@@ -126,7 +126,7 @@ class PauseTimerOperator(bpy.types.Operator):
     bl_label = "Pause Timer"
 
     def execute(self, context):
-        pause_timer()
+        pause()
         return {'FINISHED'}
     
 # Operator to resume the timer
@@ -135,7 +135,7 @@ class ResumeTimerOperator(bpy.types.Operator):
     bl_label = "Resume Timer"
 
     def execute(self, context):
-        resume_timer()
+        resume()
         return {'FINISHED'}
     
 class DisplayCurrentTimeOperator(bpy.types.Operator):

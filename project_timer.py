@@ -11,6 +11,7 @@ bl_info = {
 import bpy
 import time
 
+
 # Global variables for time tracking
 # Custom attributes have been tried but they proved
 # to be less practical for this application.
@@ -26,6 +27,11 @@ log_file_path = r"/patth/to/your/blender/file"
 #============================ Timer Functions ============================ 
 
 # Set the log file path when the .blend file is saved
+def set_log_file_path():
+    global log_file_path
+    blend_file_path = bpy.data.filepath
+    if blend_file_path:
+        log_file_path = os.path
 
 
 def start():

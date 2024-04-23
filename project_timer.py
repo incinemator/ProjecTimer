@@ -28,7 +28,7 @@ log_file_path = None # r"/patth/to/your/blender/file"
 #============================ Timer Functions ============================ 
 
 # Automatic path setting
-def set_log_file_path():
+def set_log_file_path(dummy=None):
     global log_file_path
     blend_file_path = bpy.data.filepath
     if blend_file_path:
@@ -181,7 +181,7 @@ classes = (
 def register():
     for cls in classes:
         bpy.utils.register_class(cls)
-    set_log_file_path()
+    set_log_file_path(None)
     bpy.app.handlers.load_post.append(set_log_file_path)
     bpy.app.handlers.save_post.append(set_log_file_path)
 

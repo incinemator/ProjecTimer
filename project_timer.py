@@ -35,7 +35,7 @@ def set_log_file_path():
         log_file_path = os.path.splitext(blend_file_path)[0] + "_timer_log.txt"
 
 # Set the log file path when the project is loaded
-set_log_file_path()
+
 
 def start():
     global start_time, is_paused, elapsed_time, running_time
@@ -181,6 +181,7 @@ classes = (
 def register():
     for cls in classes:
         bpy.utils.register_class(cls)
+    set_log_file_path()
 
 
 def unregister():

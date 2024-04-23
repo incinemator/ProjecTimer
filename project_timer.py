@@ -122,9 +122,9 @@ class PT_ProjectTimer(bpy.types.Panel):
 
         # Display elapsed time
         if is_file_saved():
-            box.label(text="Time Spent: {}".format(format_time(elapsed_time)), icon='PREVIEW_RANGE', embossed=True)
+            box.label(text="Time Spent: {}".format(format_time(elapsed_time)), icon='PREVIEW_RANGE', emboss=True)
         else:
-            box.label(text="Time Spent: {}".format(format_time(elapsed_time)), icon='PREVIEW_RANGE', embossed=False)
+            box.label(text="Time Spent: {}".format(format_time(elapsed_time)), icon='PREVIEW_RANGE', emboss=False)
 
         # Buttons
         layout.operator("timer.start", text="Start", icon='PLAY')

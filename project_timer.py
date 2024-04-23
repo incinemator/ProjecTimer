@@ -31,7 +31,7 @@ def set_log_file_path():
     global log_file_path
     blend_file_path = bpy.data.filepath
     if blend_file_path:
-        log_file_path = os.path
+        log_file_path = os.path.splitext(blend_file_path)[0] + "_timer_log.txt"
 
 
 def start():

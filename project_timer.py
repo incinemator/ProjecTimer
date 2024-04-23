@@ -27,13 +27,15 @@ log_file_path = None # r"/patth/to/your/blender/file"
 
 #============================ Timer Functions ============================ 
 
-# Set the log file path when the .blend file is saved
+# Automatic path setting
 def set_log_file_path():
     global log_file_path
     blend_file_path = bpy.data.filepath
     if blend_file_path:
         log_file_path = os.path.splitext(blend_file_path)[0] + "_timer_log.txt"
 
+# Set the log file path when the project is loaded
+set_log_file_path()
 
 def start():
     global start_time, is_paused, elapsed_time, running_time

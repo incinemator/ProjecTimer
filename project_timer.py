@@ -24,6 +24,10 @@ is_paused = False
 log_file_path = r"/patth/to/your/blender/file"
 
 #============================ Timer Functions ============================ 
+
+# Set the log file path when the .blend file is saved
+
+
 def start():
     global start_time, is_paused, elapsed_time, running_time
     running_time = 0

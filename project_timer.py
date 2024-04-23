@@ -28,7 +28,7 @@ log_file_path = None # r"/patth/to/your/blender/file"
 #============================ Timer Functions ============================ 
 
 # Automatic path setting
-def set_log_file_path(dummy=None):
+def set_log_file_path(dummy):
     global log_file_path
     blend_file_path = bpy.data.filepath
     if blend_file_path:

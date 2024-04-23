@@ -181,12 +181,15 @@ classes = (
 def register():
     for cls in classes:
         bpy.utils.register_class(cls)
-    set_log_file_path()
+    bpy.app.handlers.load_post.append(set_log_file_path)
+    bpy.app.handlers.save_post.append(set_log_file_path)
 
 
 def unregister():
     for cls in classes:
         bpy.utils.unregister_class(cls)
+    bpy.app.handlers.load_post.append(set_log_file_path)
+    bpy.app.handlers.save_post.append(set_log_file_path)
 
 if __name__ == "__main__":
     register()

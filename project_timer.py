@@ -126,7 +126,7 @@ class PT_ProjectTimer(bpy.types.Panel):
         if is_file_saved():
             layout.operator("timer.start", text="Start", icon='PLAY')
         else:
-          layout.operator("timer.start", text="Start", icon='PLAY', emboss=False)
+          layout.operator("timer.start", text="Start", icon='PLAY', emboss=True)
         layout.operator("timer.pause", text="Pause", icon='PAUSE')
         row = layout.row()
         row.operator("timer.resume", text="Resume", icon='RECOVER_LAST')

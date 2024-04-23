@@ -128,6 +128,7 @@ class PT_ProjectTimer(bpy.types.Panel):
         else:
           layout.operator("timer.start", text="Start", icon='PLAY', emboss=True)
           # Alternatively
+          # layout.operator("timer.start", text="Start", icon='PLAY', emboss=True).enabled=False
         layout.operator("timer.pause", text="Pause", icon='PAUSE')
         row = layout.row()
         row.operator("timer.resume", text="Resume", icon='RECOVER_LAST')

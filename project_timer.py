@@ -33,6 +33,9 @@ def set_log_file_path(dummy):
     blend_file_path = bpy.data.filepath
     if blend_file_path:
         log_file_path = os.path.splitext(blend_file_path)[0] + "_timer_log.txt"
+        print("Log file path set to: ", log_file_path)
+    else:
+        print("Blend file not saved yet")
 
 # Set the log file path when the project is loaded
 
@@ -113,7 +116,6 @@ class PT_ProjectTimer(bpy.types.Panel):
         box = layout.box()
 
         # Display elapsed time
-        #layout.label(text="Running Time: %.2f seconds" % running_time)
         box.label(text="Time Spent: {}".format(format_time(elapsed_time)), icon='PREVIEW_RANGE')
 
         # Buttons

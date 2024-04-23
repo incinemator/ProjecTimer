@@ -123,10 +123,10 @@ class PT_ProjectTimer(bpy.types.Panel):
         # Display elapsed time
         box.label(text="Time Spent: {}".format(format_time(elapsed_time)), icon='PREVIEW_RANGE')
         # Buttons
-        if is_file_saved():
-            layout.operator("timer.start", text="Start", icon='PLAY', emboss=True)
-        else:
-            layout.operator("timer.start", text="Start", icon='PLAY', emboss=False)
+        # if is_file_saved():
+        layout.operator("timer.start", text="Start", icon='PLAY')
+
+        # layout.operator("timer.start", text="Start", icon='PLAY')
         layout.operator("timer.pause", text="Pause", icon='PAUSE')
         row = layout.row()
         row.operator("timer.resume", text="Resume", icon='RECOVER_LAST')

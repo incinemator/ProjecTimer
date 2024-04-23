@@ -22,7 +22,7 @@ elapsed_time = 0
 paused_time = None
 resume_time = 0
 is_paused = False
-log_file_path = None # r"/patth/to/your/blender/file"
+log_file_path = " " # r"/patth/to/your/blender/file"
 
 
 #============================ Timer Functions ============================ 

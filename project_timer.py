@@ -181,7 +181,7 @@ classes = (
 def register():
     for cls in classes:
         bpy.utils.register_class(cls)
-    set_log_file_path(None)
+    set_log_file_path()
     bpy.app.handlers.load_post.append(set_log_file_path)
     bpy.app.handlers.save_post.append(set_log_file_path)
 

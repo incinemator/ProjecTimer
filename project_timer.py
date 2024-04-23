@@ -10,7 +10,7 @@ bl_info = {
 
 import bpy
 import time
-
+import os
 
 # Global variables for time tracking
 # Custom attributes have been tried but they proved

@@ -101,7 +101,12 @@ def log(message):
         log_file.write("{}: {}\n".format(time.strftime("%Y-%m-%d %H:%M:%S"), message))
 
 #========================================================================
-    
+
+# Check if the file has been saved
+def is_file_saved():
+    return bool(bpy.data.filepath)
+
+
 # UI
 class PT_ProjectTimer(bpy.types.Panel):
     bl_label = "ProjecTimer"
@@ -116,7 +121,10 @@ class PT_ProjectTimer(bpy.types.Panel):
         box = layout.box()
 
         # Display elapsed time
-        box.label(text="Time Spent: {}".format(format_time(elapsed_time)), icon='PREVIEW_RANGE')
+        if is_file_saved():
+            box.label(text="Time Spent: {}".format(format_time(elapsed_time)), icon='PREVIEW_RANGE')
+        else:
+            box.label(text="Time Spent: {}".format(format_time(elapsed_time)), icon='PREVIEW_RANGE', enabled=False)
 
         # Buttons
         layout.operator("timer.start", text="Start", icon='PLAY')

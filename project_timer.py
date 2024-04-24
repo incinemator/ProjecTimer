@@ -19,7 +19,7 @@ import os
 start_time = None
 running_time = 0
 elapsed_time = 0
-paused_time = None
+paused_time = 0
 resume_time = 0
 is_paused = False
 log_file_path = None # r"/patth/to/your/blender/file"
@@ -84,12 +84,12 @@ def resume():
 def display_running_time():
     global start_time, is_paused, elapsed_time, paused_time, resume_time
     if start_time is not None and not is_paused:
-        if paused_time is None:
+        if paused_time is 0:
             elapsed_time = time.time() - start_time
-        elif paused_time is not None:
+        else:
             resume_time = time.time()
             elapsed_time = time.time() - resume_time + paused_time
-            paused_time = None
+            paused_time = 0
 
 # Format time into HH:MM:SS
 def format_time(seconds):

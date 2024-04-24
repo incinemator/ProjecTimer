@@ -76,8 +76,7 @@ def resume():
     global is_paused, elapsed_time, paused_time, resume_time
     if is_paused:
         is_paused = False
-        #elapsed_time = time.time() - paused_time
-        paused_time = 0
+        elapsed_time = time.time() - paused_time
     else:
         pass
     log("Resume")

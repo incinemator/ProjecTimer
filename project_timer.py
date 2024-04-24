@@ -78,6 +78,8 @@ def resume():
         is_paused = False
         #elapsed_time = time.time() - paused_time
         paused_time = 0
+    else:
+        pass
     log("Resume")
 
 def display_running_time():

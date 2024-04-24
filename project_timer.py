@@ -89,6 +89,7 @@ def display_running_time():
         elif paused_time is not None:
             resume_time = time.time()
             elapsed_time = time.time() - resume_time + paused_time
+            paused_time = 0
 
 # Format time into HH:MM:SS
 def format_time(seconds):

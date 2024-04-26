@@ -38,9 +38,6 @@ def set_log_file_path(dummy):
     else:
         print("Blend file not saved yet")
 
-# Set the log file path when the project is loaded
-
-
 def start():
     global start_time, resume_time, is_paused, elapsed_time
     elapsed_time = 0.0

@@ -123,7 +123,7 @@ class PT_ProjectTimer(bpy.types.Panel):
             # Alternatively:
             # layout.operator("timer.start", text="Start", icon='PLAY', emboss=False).enabled=True
         else:
-          layout.operator("timer.start", text="Start", icon='PLAY', emboss=True)
+          layout.operator("timer.start", text="Start", icon='PLAY')
           # Alternatively:
           # layout.operator("timer.start", text="Start", icon='PLAY', emboss=True).enabled=False
         layout.operator("timer.pause", text="Pause", icon='PAUSE')

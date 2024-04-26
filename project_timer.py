@@ -22,7 +22,7 @@ elapsed_time = 0
 paused_time = 0
 resume_time = 0
 is_paused = False
-log_file_path =r"D:/Blener Projects/ProjecTimer"
+log_file_path =r"D:/Blender Projects/ProjecTimer"
 
 
 #============================ Timer Functions ============================ 

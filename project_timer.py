@@ -74,7 +74,7 @@ def pause():
     log("Pause")
 
 def resume():
-    global is_paused, pause_time, resume_time
+    global is_paused, resume_time
     if is_paused:
         resume_time = time.time()
         is_paused = False

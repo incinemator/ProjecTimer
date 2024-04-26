@@ -16,11 +16,11 @@ import os
 # Custom attributes have been tried but they proved
 # to be less practical for this application.
 
-start_time = None
-running_time = 0
-elapsed_time = 0
-paused_time = 0
-resume_time = 0
+start_time = 0.0
+running_time = 0.0
+elapsed_time = 0.0
+paused_time = 0.0
+resume_time = 0.0
 is_paused = False
 log_file_path =r"D:/Blender Projects/ProjecTimer"
 
@@ -42,26 +42,26 @@ def set_log_file_path(dummy):
 
 def start():
     global start_time, is_paused, elapsed_time, running_time
-    running_time = 0
-    elapsed_time = 0
-    if start_time is None:
+    running_time = 0.0
+    elapsed_time = 0.0
+    if start_time is 0.0:
         start_time = time.time()
     is_paused = False
     log("Start")
 
 def stop():
     global start_time, elapsed_time, paused_time
-    if start_time is not None:
-        if is_paused is not True and paused_time is not None:
+    if start_time is not 0.0:
+        if is_paused is not True and paused_time is not 0.0:
             elapsed_time = time.time() - start_time - paused_time
-            start_time = None
-            paused_time = None
-        elif is_paused is not True and paused_time is None:
+            start_time = 0.0
+            paused_time = 0.0
+        elif is_paused is not True and paused_time is 0.0:
             elapsed_time = time.time() - start_time
-            start_time = None
+            start_time = 0.0
         else:
             elapsed_time = paused_time
-            start_time = None
+            start_time = 0.0
     log("Stop")
 
 def pause():
@@ -84,7 +84,7 @@ def resume():
 def display_running_time():
     global start_time, is_paused, elapsed_time, paused_time, resume_time
     if start_time is not None and not is_paused:
-        if paused_time is 0:
+        if paused_time is 0.0:
             elapsed_time = time.time() - start_time
         else:
             resume_time = time.time()

@@ -89,16 +89,8 @@ def resume():
     log("Resume")
 
 def display_running_time():
-    global start_time, is_paused, elapsed_time, pause_time, resume_time, is_stopped, dt
-    if start_time is not None and not is_paused or not is_stopped:
-        if pause_time is 0.0:
-            dt = time.time() - resume_time
-            elapsed_time += dt
-        else:
-            dt = pause_time - resume_time
-            elapsed_time += dt
-    else:
-        return elapsed_time
+    global elapsed_time
+    return elapsed_time
 
 
 # Format time into HH:MM:SS

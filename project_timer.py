@@ -51,7 +51,7 @@ def start():
     log("Start")
 
 def stop():
-    global start_time, stop_time, resume_time, elapsed_time, pause_time, dt, is_stopped
+    global start_time, stop_time, resume_time, elapsed_time, pause_time, dt
     is_stopped = True
     stop_time = time.time()
     if start_time is not 0.0:

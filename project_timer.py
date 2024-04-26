@@ -23,7 +23,6 @@ stop_time = 0.0
 elapsed_time = 0.0
 dt = 0.0 # Time interval from start/resume to pause/stop
 is_paused = False
-is_stopped = False
 log_file_path =r"D:/Blender Projects/ProjecTimer"
 
 

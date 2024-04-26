@@ -58,16 +58,13 @@ def stop():
     is_stopped = True
     stop_time = time.time()
     if start_time is not 0.0:
-        if is_paused is not True and pause_time is not 0.0:
-            dt = stop_time - resume_time
-            elapsed_time += dt
-            start_time = 0.0
-            pause_time = 0.0
-        else:
-            dt = stop_time - pause_time
-            elapsed_time += dt
-            start_time = 0.0
-            pause_time = 0.0
+        dt = stop_time - resume_time
+        elapsed_time += dt
+        start_time = 0.0
+        pause_time = 0.0
+        dt = 0.0
+    else:
+        pass
     log("Stop")
 
 def pause():

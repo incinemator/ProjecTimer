@@ -44,8 +44,7 @@ def set_log_file_path(dummy):
 
 
 def start():
-    global start_time, resume_time, is_paused, elapsed_time, running_time
-    running_time = 0.0
+    global start_time, resume_time, is_paused, elapsed_time
     elapsed_time = 0.0
     if start_time is 0.0:
         start_time = time.time()

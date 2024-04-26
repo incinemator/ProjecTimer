@@ -17,10 +17,12 @@ import os
 # to be less practical for this application.
 
 start_time = 0.0
+pause_time = 0.0
+resume_time = 0.0
+stop_time = 0.0
 running_time = 0.0
 elapsed_time = 0.0
-paused_time = 0.0
-resume_time = 0.0
+dt = 0.0 # Time interval from start/resume to pause/stop
 is_paused = False
 log_file_path =r"D:/Blender Projects/ProjecTimer"
 
@@ -68,8 +70,8 @@ def pause():
     global is_paused, elapsed_time, paused_time
     if is_paused is not True:
         is_paused = True
+        paused_time = time.time()
         elapsed_time = time.time() - start_time
-        paused_time = elapsed_time
     log("Pause")
 
 def resume():
@@ -87,8 +89,7 @@ def display_running_time():
         if paused_time is 0.0:
             elapsed_time = time.time() - start_time
         else:
-            resume_time = time.time()
-            elapsed_time = time.time() - resume_time + paused_time
+            elapsed_time = time.time() - paused_time
 
 
 # Format time into HH:MM:SS

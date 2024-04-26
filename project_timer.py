@@ -54,32 +54,35 @@ def start():
 
 def stop():
     global start_time, stop_time, resume_time, elapsed_time, pause_time, dt
+    stop_time = time.time()
     if start_time is not 0.0:
         if is_paused is not True and pause_time is not 0.0:
-            dt = resume_time - stop_time
+            dt = stop_time - resume_time
+            elapsed_time += dt
             start_time = 0.0
             pause_time = 0.0
-        elif is_paused is not True and pause_time is 0.0:
-            elapsed_time = time.time() - start_time
-            start_time = 0.0
         else:
-            elapsed_time = pause_time
+            dt = stop_time - pause_time
+            elapsed_time += dt
             start_time = 0.0
+            pause_time = 0.0
     log("Stop")
 
 def pause():
-    global is_paused, elapsed_time, pause_time
+    global is_paused, elapsed_time, pause_time, dt
     if is_paused is not True:
         is_paused = True
         pause_time = time.time()
-        elapsed_time = time.time() - start_time
+        dt = pause_time - resume_time
+        elapsed_time += dt
     log("Pause")
 
 def resume():
     global is_paused, elapsed_time, pause_time, resume_time
     if is_paused:
+        resume_time = time.time()
         is_paused = False
-        elapsed_time = time.time() - pause_time
+        elapsed_time = resume_time - pause_time
     else:
         pass
     log("Resume")

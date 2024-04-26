@@ -24,6 +24,7 @@ running_time = 0.0
 elapsed_time = 0.0
 dt = 0.0 # Time interval from start/resume to pause/stop
 is_paused = False
+is_stopped = False
 log_file_path =r"D:/Blender Projects/ProjecTimer"
 
 
@@ -53,7 +54,8 @@ def start():
     log("Start")
 
 def stop():
-    global start_time, stop_time, resume_time, elapsed_time, pause_time, dt
+    global start_time, stop_time, resume_time, elapsed_time, pause_time, dt, is_stopped
+    is_stopped = True
     stop_time = time.time()
     if start_time is not 0.0:
         if is_paused is not True and pause_time is not 0.0:
@@ -88,8 +90,8 @@ def resume():
     log("Resume")
 
 def display_running_time():
-    global start_time, is_paused, elapsed_time, pause_time, resume_time
-    if start_time is not None and not is_paused:
+    global start_time, is_paused, elapsed_time, pause_time, resume_time, is_stopped
+    if start_time is not None and not is_paused or not is_stopped:
         if pause_time is 0.0:
             elapsed_time = time.time() - start_time
         else:

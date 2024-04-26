@@ -43,53 +43,54 @@ def set_log_file_path(dummy):
 
 
 def start():
-    global start_time, is_paused, elapsed_time, running_time
+    global start_time, resume_time, is_paused, elapsed_time, running_time
     running_time = 0.0
     elapsed_time = 0.0
     if start_time is 0.0:
         start_time = time.time()
+        resume_time = start_time
     is_paused = False
     log("Start")
 
 def stop():
-    global start_time, elapsed_time, paused_time
+    global start_time, stop_time, resume_time, elapsed_time, pause_time, dt
     if start_time is not 0.0:
-        if is_paused is not True and paused_time is not 0.0:
-            elapsed_time = time.time() - start_time - paused_time
+        if is_paused is not True and pause_time is not 0.0:
+            dt = resume_time - stop_time
             start_time = 0.0
-            paused_time = 0.0
-        elif is_paused is not True and paused_time is 0.0:
+            pause_time = 0.0
+        elif is_paused is not True and pause_time is 0.0:
             elapsed_time = time.time() - start_time
             start_time = 0.0
         else:
-            elapsed_time = paused_time
+            elapsed_time = pause_time
             start_time = 0.0
     log("Stop")
 
 def pause():
-    global is_paused, elapsed_time, paused_time
+    global is_paused, elapsed_time, pause_time
     if is_paused is not True:
         is_paused = True
-        paused_time = time.time()
+        pause_time = time.time()
         elapsed_time = time.time() - start_time
     log("Pause")
 
 def resume():
-    global is_paused, elapsed_time, paused_time, resume_time
+    global is_paused, elapsed_time, pause_time, resume_time
     if is_paused:
         is_paused = False
-        elapsed_time = time.time() - paused_time
+        elapsed_time = time.time() - pause_time
     else:
         pass
     log("Resume")
 
 def display_running_time():
-    global start_time, is_paused, elapsed_time, paused_time, resume_time
+    global start_time, is_paused, elapsed_time, pause_time, resume_time
     if start_time is not None and not is_paused:
-        if paused_time is 0.0:
+        if pause_time is 0.0:
             elapsed_time = time.time() - start_time
         else:
-            elapsed_time = time.time() - paused_time
+            elapsed_time = time.time() - pause_time
 
 
 # Format time into HH:MM:SS

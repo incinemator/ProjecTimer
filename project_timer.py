@@ -18,7 +18,7 @@ import os
 
 start_time = 0.0
 pause_time = 0.0
-resume_time = 0.0
+#resume_time = 0.0
 stop_time = 0.0
 running_time = 0.0
 elapsed_time = 0.0
@@ -119,7 +119,7 @@ class PT_ProjectTimer(bpy.types.Panel):
 
     def draw(self, context):
         layout = self.layout
-        global elapsed_time, running_time
+        global elapsed_time
         box = layout.box()
 
         # Display elapsed time

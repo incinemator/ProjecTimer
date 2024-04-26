@@ -22,7 +22,7 @@ elapsed_time = 0
 paused_time = 0
 resume_time = 0
 is_paused = False
-log_file_path = None # r"/patth/to/your/blender/file"
+log_file_path =r"D:/Blener Projects/ProjecTimer"
 
 
 #============================ Timer Functions ============================ 

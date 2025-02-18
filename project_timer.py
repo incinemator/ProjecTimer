@@ -103,7 +103,9 @@ def is_file_saved():
 
 
 # UI
-# A way must be found to refresh the timer in real time
+# A way must be found to refresh the timer in real time.
+# If somehow the draw method could be called with each tick althouch it won't be
+# efficient.
 class PT_ProjectTimer(bpy.types.Panel):
     bl_label = "ProjecTimer"
     bl_idname = "panel.project_timer"

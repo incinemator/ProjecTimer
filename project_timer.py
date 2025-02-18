@@ -103,6 +103,7 @@ def is_file_saved():
 
 
 # UI
+# A way must be found to refresh the timer in real time
 class PT_ProjectTimer(bpy.types.Panel):
     bl_label = "ProjecTimer"
     bl_idname = "panel.project_timer"
